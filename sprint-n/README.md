@@ -1,4 +1,4 @@
-Sprint 1:
+## Sprint 1:
 
 Tareas a entregar: 
 
@@ -14,10 +14,11 @@ Estimacion para proximo sprint:
 	Crear set de peliculas dummys (3)
 
 	Levantar API REST. Spring Boot (8). 8 de complejidad ya que requiere muchas horas de research.
+	Spike (2) (Get, Post) - PING
 	
-	Levantar una web server con REACT (5).
+	Levantar set de Peliculas (5).
 
-	POSIBLE: Mostrar el set de peliculas en el web server(5).
+	POSIBLE: Que el web server responda al set de peliculas (5).
 
 Estado de servidor de integracion continua:
  
