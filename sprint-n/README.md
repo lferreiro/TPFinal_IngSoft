@@ -6,10 +6,10 @@ Tareas a entregar:
 
 	Modelo base del proyecto (2) - terminado.
 	
-	Testeo del modelo base del proyecto (3) - incompleta.
 
 Estimacion para proximo sprint:
 
+	Testeo del modelo base del proyecto (3).
 	
 	Crear set de peliculas dummys (3)
 
