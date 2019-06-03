@@ -1,4 +1,4 @@
-package main;
+package Ingenieria_de_Software.TPFinal;
 
 import javafx.util.Pair;
 
