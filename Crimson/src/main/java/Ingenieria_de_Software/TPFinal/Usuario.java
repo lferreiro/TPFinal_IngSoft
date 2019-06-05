@@ -1,15 +1,19 @@
 package Ingenieria_de_Software.TPFinal;
 
+import java.util.ArrayList;
+
 public class Usuario {
 
     private String nombre;
     private int dni;
     private String email;
+    private ArrayList<Reserva> reservas;
 
     public Usuario(String nombre, int dni, String email){
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
+        reservas = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -24,15 +28,17 @@ public class Usuario {
         return dni;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+
+    public void generarReserva(int cantidadAsientos, Pelicula pelicula){
+        reservas.add(pelicula.reservarAsientos(cantidadAsientos, this.dni));
+
+    }
+
+    public ArrayList<Reserva> getReservas(){
+        return this.reservas;
     }
 }
