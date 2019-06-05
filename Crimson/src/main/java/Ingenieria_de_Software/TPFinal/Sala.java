@@ -48,4 +48,12 @@ public class Sala {
     public void setNumeroSala(int numeroSala) {
         this.numeroSala = numeroSala;
     }
+
+    public int getAsientosOcupados(){
+        return asientosOcupados;
+    }
+
+    public int getCantidadAsientos(){
+        return cantidadAsientos;
+    }
 }

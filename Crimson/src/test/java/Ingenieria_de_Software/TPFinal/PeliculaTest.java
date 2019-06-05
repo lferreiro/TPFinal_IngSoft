@@ -63,4 +63,14 @@ public class PeliculaTest {
         assertEquals(carteleraTest.peliculaList.size(), 5);
     }
 
+    @Test
+    public void usuarioReservaAsientosParaUnaPeliculaYLosAsientosOcupadosDeLaSalaAumentan(){
+        Sala salaPelicula = new Sala(30, 1, "2D");
+        Pelicula peliculaTest = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", salaPelicula );
+        Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
+        usuarioTest.generarReserva(3, peliculaTest);
+        assertEquals(salaPelicula.getAsientosOcupados(), 3);
+
+    }
+
 }
