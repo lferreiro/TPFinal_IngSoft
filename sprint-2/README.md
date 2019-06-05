@@ -26,8 +26,10 @@ Estado de servidor de integracion continua:
 	--No hay tests. Pero esta conectado.
 
 Velocidad sprint 2:
+<p align="center">
+  <img src="ChartGo.png" />
+</p>
 
-	17.
 
 Retrospectiva del sprint:
 
