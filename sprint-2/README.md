@@ -27,7 +27,7 @@ Estado de servidor de integracion continua:
 
 Velocidad sprint 2:
 <p align="center">
-  <img src="sprint-2/ChartGo.png" />
+  <img src="ChartGo.png" />
 </p>
 
 
