@@ -13,6 +13,11 @@ public class Example {
         return "Hello World!";
     }
 
+    @RequestMapping("/pelis")
+    String getPeliculas() {
+        return "No tengo peliculas";
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Example.class, args);
     }
