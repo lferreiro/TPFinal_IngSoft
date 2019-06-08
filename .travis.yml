@@ -1,3 +1,4 @@
-language: java
+-language: java
 
-before_install: - cd Crimson/
+ before_script: 
+	- cd Crimson
