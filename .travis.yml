@@ -1,4 +1,4 @@
--language: java
-
- before_script: 
-	- cd Crimson
+language: java
+sudo: false
+before_script: -cd Crimson
+script: mvn clean verify
