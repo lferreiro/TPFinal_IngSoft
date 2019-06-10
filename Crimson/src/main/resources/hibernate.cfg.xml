@@ -6,12 +6,12 @@
 	<session-factory>
 		<!-- Database connection settings -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate1</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/Crimson</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">root</property>
+		<!--property name="connection.password">root</property -->
 
 		<!-- SQL dialect -->
-		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 		<!-- Disable the second-level cache -->
 		<property name="hibernate.cache.use_second_level_cache">true</property>
@@ -20,9 +20,14 @@
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
 		
-		<property name="hibernate.hbm2ddl.auto">validate</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="ejemplo" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Asiento" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Cartelera" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Pelicula" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Reserva" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Sala" />
+		<mapping class="Ingenieria_de_Software.TPFinal.Usuario" />
 	
 	</session-factory>
 </hibernate-configuration>

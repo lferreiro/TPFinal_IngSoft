@@ -1,15 +1,25 @@
 package Ingenieria_de_Software.TPFinal;
 
-import javafx.util.Pair;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Asiento {
 
+    @Id
     private int numeroDeAsiento;
 
-    public Asiento(Integer numeroDeAsiento){
+    @ManyToOne
+    private Sala sala;
+
+    public Asiento(Integer numeroDeAsiento, Sala sala) {
         this.numeroDeAsiento = numeroDeAsiento;
+        this.sala = sala;
     }
 
+    public Asiento() {}
 
     public Integer getNumeroDeAsiento() {
         return numeroDeAsiento;
