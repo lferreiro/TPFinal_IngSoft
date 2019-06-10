@@ -1,15 +1,26 @@
 package Ingenieria_de_Software.TPFinal;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Entity
 public class Sala {
 
-    private ArrayList<Asiento> asientosSala = new ArrayList<>();
+    @Id
     private int numeroSala;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sala")
+    private List<Asiento> asientosSala = new ArrayList<>();
+
     private int cantidadAsientos;
+
     private int asientosOcupados;
+
     private String tipoSala;
 
 
@@ -18,12 +29,12 @@ public class Sala {
         this.cantidadAsientos = cantidadDeAsientos;
         this.numeroSala = numeroSala;
         for (int i = 0 ; i <cantidadDeAsientos; i ++ ){
-            asientosSala.add(new Asiento(i));
+            asientosSala.add(new Asiento(i, this));
         }
         this.tipoSala = tipoSala;
-
-
     }
+
+    public Sala() {}
 
     public List<Asiento> getAsientosSala(int cantAsientos) {
         List res = new ArrayList();
