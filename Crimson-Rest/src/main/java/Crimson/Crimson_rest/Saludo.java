@@ -1,4 +1,4 @@
-package Ingenieria_de_Software.TPFinal;
+package Crimson.Crimson_rest;
 
 public class Saludo {
 
@@ -17,6 +17,4 @@ public class Saludo {
     public String getContent() {
         return this.content;
     }
-    //TRAVIS CAMPEON UNA PASION INCONTROLABLE
 }
-

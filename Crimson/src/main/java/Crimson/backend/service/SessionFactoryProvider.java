@@ -1,4 +1,4 @@
-package Ingenieria_de_Software.backend.service;
+package Crimson.backend.service;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

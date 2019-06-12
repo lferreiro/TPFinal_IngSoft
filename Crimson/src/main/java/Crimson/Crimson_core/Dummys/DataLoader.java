@@ -1,10 +1,8 @@
-package Ingenieria_de_Software.TPFinal.Dummys;
+package Crimson.Crimson_core.Dummys;
 
-import Ingenieria_de_Software.TPFinal.Cartelera;
-import Ingenieria_de_Software.TPFinal.Pelicula;
-import Ingenieria_de_Software.TPFinal.Sala;
-
-import java.util.ArrayList;
+import Crimson.Crimson_core.Cartelera;
+import Crimson.Crimson_core.Pelicula;
+import Crimson.Crimson_core.Sala;
 
 public class DataLoader {
 

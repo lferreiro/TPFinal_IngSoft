@@ -22,12 +22,12 @@
 		
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="Ingenieria_de_Software.TPFinal.Asiento" />
-		<mapping class="Ingenieria_de_Software.TPFinal.Cartelera" />
-		<mapping class="Ingenieria_de_Software.TPFinal.Pelicula" />
-		<mapping class="Ingenieria_de_Software.TPFinal.Reserva" />
-		<mapping class="Ingenieria_de_Software.TPFinal.Sala" />
-		<mapping class="Ingenieria_de_Software.TPFinal.Usuario" />
+		<mapping class="Crimson.Crimson_core.Asiento" />
+		<mapping class="Crimson.Crimson_core.Cartelera" />
+		<mapping class="Crimson.Crimson_core.Pelicula" />
+		<mapping class="Crimson.Crimson_core.Reserva" />
+		<mapping class="Crimson.Crimson_core.Sala" />
+		<mapping class="Crimson.Crimson_core.Usuario" />
 	
 	</session-factory>
 </hibernate-configuration>

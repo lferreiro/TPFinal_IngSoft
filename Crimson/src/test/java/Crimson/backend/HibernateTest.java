@@ -1,10 +1,10 @@
-package Ingenieria_de_Software.backend;
+package Crimson.backend;
 
-import Ingenieria_de_Software.TPFinal.Asiento;
-import Ingenieria_de_Software.TPFinal.Sala;
-import Ingenieria_de_Software.TPFinal.Usuario;
-import Ingenieria_de_Software.backend.dao.impl.HibernateGenericDAO;
-import Ingenieria_de_Software.backend.service.TransactionRunner;
+import Crimson.Crimson_core.Asiento;
+import Crimson.Crimson_core.Sala;
+import Crimson.Crimson_core.Usuario;
+import Crimson.backend.dao.impl.HibernateGenericDAO;
+import Crimson.backend.service.TransactionRunner;
 import org.junit.Before;
 import org.junit.Test;
 

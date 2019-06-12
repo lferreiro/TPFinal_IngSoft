@@ -1,8 +1,7 @@
-package Ingenieria_de_Software.TPFinal;
+package Crimson.Crimson_core;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,4 @@
-package Ingenieria_de_Software.backend.dao.impl;
-
-import java.io.Serializable;
+package Crimson.backend.dao.impl;
 
 public interface GenericDAO<T> {
     void add(T entity);

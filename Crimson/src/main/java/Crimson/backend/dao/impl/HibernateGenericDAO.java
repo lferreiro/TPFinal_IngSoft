@@ -1,9 +1,7 @@
-package Ingenieria_de_Software.backend.dao.impl;
+package Crimson.backend.dao.impl;
 
-import Ingenieria_de_Software.backend.service.TransactionRunner;
+import Crimson.backend.service.TransactionRunner;
 import org.hibernate.Session;
-
-import java.io.Serializable;
 
 public class HibernateGenericDAO<T> implements GenericDAO<T> {
     private Class<T> entityClass;

@@ -1,7 +1,6 @@
-package Ingenieria_de_Software.TPFinal;
+package Crimson.Crimson_core;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

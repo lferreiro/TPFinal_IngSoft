@@ -1,4 +1,4 @@
-package Ingenieria_de_Software.TPFinal;
+package Crimson.Crimson_core;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
