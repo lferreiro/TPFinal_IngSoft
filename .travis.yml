@@ -1,7 +1,9 @@
 language: java
-services: mysql
-sudo: false
+sudo: true
+services:
+  - mysql
 before_script: 
-	- cd Crimson
-	- mysql -e 'CREATE DATABASE IF NOT EXISTS crimson;' 
+  - cd Crimson
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS Crimson;' 
 script: mvn clean verify

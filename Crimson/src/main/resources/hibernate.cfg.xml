@@ -8,7 +8,7 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/Crimson</property>
 		<property name="connection.username">root</property>
-		<!-- property name="connection.password">root</property -->
+		<!--property name="connection.password">root</property-->
 
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -20,7 +20,7 @@
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
 		
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
 		<mapping class="Crimson.Crimson_core.Asiento" />
 		<mapping class="Crimson.Crimson_core.Cartelera" />
