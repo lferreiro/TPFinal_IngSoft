@@ -5,5 +5,5 @@ services:
 before_script: 
   - cd Crimson
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS crimson;' 
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS Crimson;' 
 script: mvn clean verify
