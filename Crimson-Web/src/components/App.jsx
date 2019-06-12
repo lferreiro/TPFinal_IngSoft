@@ -1,21 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import React, { Component } from 'react';
-import logo from '../dist/logo.svg';
-import '../dist/css/App.css';
+import '../dist/css/principal/App.css';
 
-class App extends Component {
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+
+import Root from './Root.jsx';
+import Home from './principal/Home';
+import PreviewPelicula from './principal/PreviewPelicula'
+
+export default class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Edit <code>src/App.js</code> and save to reload.</p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"> Learn React </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Root>
+          <Switch>
+            <Route path="/pelicula" component={PreviewPelicula} />
+            {/* <Route path="/login" component={Login} /> */}
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Root>
+      </BrowserRouter>
     );
   }
 }
-
-export default App;
