@@ -1,5 +1,4 @@
 language: java
-services: mysql
 sudo: false
 before_script: cd Crimson
 script: mvn clean verify
