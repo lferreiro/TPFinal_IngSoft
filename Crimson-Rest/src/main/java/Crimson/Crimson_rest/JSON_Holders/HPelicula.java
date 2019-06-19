@@ -7,15 +7,13 @@ public class HPelicula {
     private final String        clasificacion;
     private final String        sinopsis;
     private final HSala         sala;
-    private final HCartelera    cartelera;
 
-    public HPelicula(String nombre, String genero, String clasificacion, String sinopsis, HSala sala, HCartelera cartelera) {
+    public HPelicula(String nombre, String genero, String clasificacion, String sinopsis, HSala sala) {
         this.nombre = nombre;
         this.genero = genero;
         this.clasificacion = clasificacion;
         this.sinopsis = sinopsis;
         this.sala = sala;
-        this.cartelera = cartelera;
     }
 
     public String getNombre() {
@@ -36,9 +34,5 @@ public class HPelicula {
 
     public HSala getSala() {
         return sala;
-    }
-
-    public HCartelera getCartelera() {
-        return cartelera;
     }
 }
