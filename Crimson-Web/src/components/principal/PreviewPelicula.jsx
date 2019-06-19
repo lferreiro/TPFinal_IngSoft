@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import API from '../../service/api';
 
@@ -17,7 +17,7 @@ export default class PeliculaPreview extends React.Component {
   }
 
   conseguirImagen() {
-    API.get(``)
+    API.get('')
       .then(response => this.cargarImagen(response))
       .catch(console.log('imagen no encontrada'));
   }
@@ -34,11 +34,11 @@ export default class PeliculaPreview extends React.Component {
           <h5 className="card-title">{this.state.titulo}</h5>
           <h5 className="card-title">Pelicula</h5>
           <p className="card-text">
-            {`Nombre: ${this.state.nombre}`} <br/>
-            {`Genero: ${this.state.genero}`} <br/>
+            {`Genero: ${this.state.genero}`} <br />
+            {`Nombre: ${this.state.nombre}`} <br />
             {`Clasificacion: ${this.state.clasificacion}`} <br />
-            {`Sinopsis: ${this.state.sinopsis}`} <br/>
-            {`Numero de sala: ${this.state.sala}`} <br/>
+            {`Sinopsis: ${this.state.sinopsis}`} <br />
+            {`Numero de sala: ${this.state.sala}`} <br />
           </p>
           {/* <Link
             className="btn btn-primary"
