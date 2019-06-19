@@ -2,9 +2,10 @@ package Crimson.Crimson_core;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Date;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
@@ -21,9 +22,13 @@ public class PeliculaTest {
     private Sala sala3;
     private Sala sala4;
     private Sala sala5;
+    private SimpleDateFormat formatter;
+    private Date dateTime;
 
     @Before
     public void setup(){
+        formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        carteleraTest = new Cartelera();
         sala1 = new Sala(200, 1, "2D");
         sala2 = new Sala(45, 2, "2D");
         sala3 = new Sala(50, 3, "3D");
@@ -46,7 +51,20 @@ public class PeliculaTest {
         assertTrue(usuarioTest.getReservas().size() == 1);
         assertEquals(usuarioTest.getReservas().get(0).getDniUsuario(), usuarioTest.getDni());
         assertEquals(usuarioTest.getReservas().get(0).getNumeroSala(), peliculaTest.getSala().getNumeroSala());
+    }
 
+    @Test
+    public void testUsuarioGeneraUnaReservaParaUnaPeliculaConFechaTal() throws ParseException {
+        dateTime = formatter.parse("2019-06-18 22:15:00");
+
+        Sala salaPelicula = new Sala(30, 1, "2D");
+        Pelicula peliculaTest = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", salaPelicula, carteleraTest );
+        Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
+        usuarioTest.generarReservaConFecha(3, peliculaTest, dateTime);
+
+        Reserva reserva = usuarioTest.getReservas().get(0);
+
+        assertEquals(formatter.format(reserva.getDate()), "2019-06-18 22:15:00");
     }
 
     @Test
