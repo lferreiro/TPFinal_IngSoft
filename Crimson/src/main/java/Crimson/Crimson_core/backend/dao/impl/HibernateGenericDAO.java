@@ -1,6 +1,6 @@
-package Crimson.backend.dao.impl;
+package Crimson.Crimson_core.backend.dao.impl;
 
-import Crimson.backend.service.TransactionRunner;
+import Crimson.Crimson_core.backend.service.TransactionRunner;
 import org.hibernate.Session;
 
 import java.io.Serializable;

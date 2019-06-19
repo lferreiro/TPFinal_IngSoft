@@ -1,8 +1,8 @@
-package Crimson.backend;
+package Crimson.Crimson_core.backend;
 
 import Crimson.Crimson_core.*;
-import Crimson.backend.dao.impl.HibernateGenericDAO;
-import Crimson.backend.service.TransactionRunner;
+import Crimson.Crimson_core.backend.dao.impl.HibernateGenericDAO;
+import Crimson.Crimson_core.backend.service.TransactionRunner;
 import org.junit.Before;
 import org.junit.Test;
 

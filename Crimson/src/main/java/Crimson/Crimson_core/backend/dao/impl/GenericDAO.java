@@ -1,4 +1,4 @@
-package Crimson.backend.dao.impl;
+package Crimson.Crimson_core.backend.dao.impl;
 
 import java.io.Serializable;
 
