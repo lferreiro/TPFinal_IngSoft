@@ -1,9 +1,7 @@
 package Crimson.Crimson_core;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Asiento {
@@ -12,6 +10,7 @@ public class Asiento {
     private int numeroDeAsiento;
 
     @ManyToOne
+    @JoinColumn(name = "Reserva_id", nullable = false)
     private Sala sala;
 
     public Asiento(Integer numeroDeAsiento, Sala sala) {
