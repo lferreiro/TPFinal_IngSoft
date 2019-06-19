@@ -2,6 +2,8 @@ package Crimson.Crimson_core.backend;
 
 import Crimson.Crimson_core.*;
 import Crimson.Crimson_core.backend.dao.impl.HibernateGenericDAO;
+import Crimson.Crimson_core.backend.dao.impl.ReservaDAO;
+import Crimson.Crimson_core.backend.dao.impl.UsuarioDAO;
 import Crimson.Crimson_core.backend.service.TransactionRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +12,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HibernateTest {
-    private Asiento asiento;
-    private HibernateGenericDAO hibernateDAO;
+    private UsuarioDAO usuarioDAO;
+    private ReservaDAO reservaDAO;
     private Sala sala;
     private Usuario usuario1;
     private Usuario usuario2;
@@ -20,6 +22,8 @@ public class HibernateTest {
 
     @Before
     public void setUp() throws Exception {
+        usuarioDAO = new UsuarioDAO();
+        reservaDAO = new ReservaDAO();
         sala = new Sala(30, 1, "2D");
         cartelera = new Cartelera();
         usuario1 = new Usuario("Miguel", 2566464, "Miguel@gmail.com");
@@ -29,12 +33,10 @@ public class HibernateTest {
 
     @Test
     public void recuperarUsuario() {
-        hibernateDAO  = new HibernateGenericDAO(Usuario.class);
-
         TransactionRunner.runInSession(() -> {
-            hibernateDAO.add(usuario1);
+            usuarioDAO.add(usuario1);
 
-            Usuario usuarioGet = (Usuario) hibernateDAO.get(2566464);
+            Usuario usuarioGet = usuarioDAO.get(2566464);
 
             assertEquals(usuario1.getDni(), usuarioGet.getDni());
 
@@ -45,15 +47,11 @@ public class HibernateTest {
 
     @Test
     public void recuperarReserva() {
-        hibernateDAO = new HibernateGenericDAO(Usuario.class);
-        HibernateGenericDAO hibernateReservaDao = new HibernateGenericDAO(Reserva.class);
-
-
         TransactionRunner.runInSession(() -> {
             usuario2.generarReserva(5, pelicula);
-            hibernateDAO.add(usuario2);
+            usuarioDAO.add(usuario2);
 
-            Reserva reservaGet = (Reserva) hibernateReservaDao.get(1L);
+            Reserva reservaGet = reservaDAO.get(1L);
 
             assertEquals(usuario2.getReservas().get(0), reservaGet);
 

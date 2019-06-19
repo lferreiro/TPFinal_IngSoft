@@ -3,16 +3,16 @@ import React from 'react';
 
 import API from '../../service/api';
 
-export default class PeliculaPreview extends React.Component {
+export default class PreviewPelicula extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       imagen: '/img/placeholder.png',
-      nombre: this.props.datos.nombre,
-      genero: this.props.datos.genero,
-      clasificacion: this.props.datos.clasificacion,
-      sinopsis: this.props.datos.sinopsis,
-      sala: this.props.datos.sala,
+      nombre: this.props.nombre,
+      genero: this.props.genero,
+      clasificacion: this.props.clasificacion,
+      sinopsis: this.props.sinopsis,
+      sala: this.props.sala,
     };
   }
 
