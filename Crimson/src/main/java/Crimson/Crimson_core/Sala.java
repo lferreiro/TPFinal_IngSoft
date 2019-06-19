@@ -37,7 +37,7 @@ public class Sala {
 
     public List<Asiento> getAsientosSala(int cantAsientos) {
         List res = new ArrayList();
-        if(this.cantidadAsientos > asientosOcupados) {
+        if(this.cantidadAsientos > asientosOcupados + cantAsientos) {
             for (int i = 0; i < cantAsientos; i++) {
                 res.add(asientosSala.get(asientosOcupados));
                 asientosOcupados ++;

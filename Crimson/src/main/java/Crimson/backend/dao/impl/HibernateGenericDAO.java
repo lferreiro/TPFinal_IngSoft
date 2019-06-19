@@ -3,6 +3,8 @@ package Crimson.backend.dao.impl;
 import Crimson.backend.service.TransactionRunner;
 import org.hibernate.Session;
 
+import java.io.Serializable;
+
 public class HibernateGenericDAO<T> implements GenericDAO<T> {
     private Class<T> entityClass;
 
@@ -17,7 +19,7 @@ public class HibernateGenericDAO<T> implements GenericDAO<T> {
     }
 
     @Override
-    public T get(Integer id) {
+    public T get(Serializable id) {
         Session session = TransactionRunner.getCurrentSession();
         return session.get(entityClass, id);
     }
