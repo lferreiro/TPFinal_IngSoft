@@ -1,4 +1,4 @@
-package Crimson.backend.service;
+package Crimson.Crimson_core.backend.service;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
