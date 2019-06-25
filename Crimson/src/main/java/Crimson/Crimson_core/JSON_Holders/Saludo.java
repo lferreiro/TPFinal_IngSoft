@@ -1,4 +1,4 @@
-package Crimson.Crimson_rest.JSON_Holders;
+package Crimson.Crimson_core.JSON_Holders;
 
 public class Saludo {
 

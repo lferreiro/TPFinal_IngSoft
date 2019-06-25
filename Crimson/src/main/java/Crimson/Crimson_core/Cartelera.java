@@ -1,9 +1,12 @@
 package Crimson.Crimson_core;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Component
 public class Cartelera {
 
     @Id
@@ -23,5 +26,8 @@ public class Cartelera {
         this.peliculaList.add(pelicula);
     }
 
+    public List<Pelicula> getPeliculas() {
+        return this.peliculaList;
+    }
 
 }
