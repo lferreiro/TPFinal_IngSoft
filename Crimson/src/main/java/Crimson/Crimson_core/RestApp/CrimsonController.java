@@ -1,17 +1,38 @@
-package Crimson.Crimson_rest.RestApp;
+package Crimson.Crimson_core.RestApp;
 
-import Crimson.Crimson_rest.JSON_Holders.HPelicula;
-import Crimson.Crimson_rest.JSON_Holders.HSala;
+import Crimson.Crimson_core.Cartelera;
+import Crimson.Crimson_core.Dummys.DataLoader;
+import Crimson.Crimson_core.JSON_Holders.HPelicula;
+import Crimson.Crimson_core.JSON_Holders.HSala;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 
 @RestController
 public class CrimsonController {
 
     private static final String template = "Esta es:";
+    @Autowired
+    private Intermodelo intermodelo;
 
     @GetMapping(path="/")
+
+    @PostConstruct
+    public void initialize() {
+        DataLoader loader = new DataLoader();
+        Cartelera cartelera = new Cartelera();
+        loader.crearSetDeDatos(cartelera);
+        DataManager dataManager = new DataManager(cartelera);
+        Intermodelo intermodelo = new Intermodelo(dataManager);
+    }
+
+//    @RequestMapping("/cartelera")
+//    public List<HPelicula> getCartelera() {
+//
+//    }
 
     @RequestMapping("/pelicula")
     public HPelicula getPelicula() {
