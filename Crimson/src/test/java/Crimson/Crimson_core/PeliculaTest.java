@@ -43,7 +43,7 @@ public class PeliculaTest {
     }
 
     @Test
-    public void testUsuarioGeneraUnaReservaParaUnaPelicula(){
+    public void testUsuarioGeneraUnaReservaParaUnaPelicula() throws AsientosInsuficientesException {
         Sala salaPelicula = new Sala(30, 1, "2D");
         Pelicula peliculaTest = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", salaPelicula, carteleraTest );
         Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
@@ -54,7 +54,7 @@ public class PeliculaTest {
     }
 
     @Test
-    public void testUsuarioGeneraUnaReservaParaUnaPeliculaConFechaTal() throws ParseException {
+    public void testUsuarioGeneraUnaReservaParaUnaPeliculaConFechaTal() throws ParseException, AsientosInsuficientesException {
         dateTime = formatter.parse("2019-06-18 22:15:00");
 
         Sala salaPelicula = new Sala(30, 1, "2D");
@@ -81,7 +81,7 @@ public class PeliculaTest {
     }
 
     @Test
-    public void usuarioReservaAsientosParaUnaPeliculaYLosAsientosOcupadosDeLaSalaAumentan(){
+    public void usuarioReservaAsientosParaUnaPeliculaYLosAsientosOcupadosDeLaSalaAumentan() throws AsientosInsuficientesException {
         Sala salaPelicula = new Sala(30, 1, "2D");
         Pelicula peliculaTest = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", salaPelicula, carteleraTest );
         Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");

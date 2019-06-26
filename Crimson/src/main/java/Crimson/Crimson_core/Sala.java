@@ -13,9 +13,6 @@ public class Sala {
     @Id
     private int numeroSala;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sala")
-    private List<Asiento> asientosSala = new ArrayList<>();
-
     private int cantidadAsientos;
 
     private int asientosOcupados;
@@ -27,28 +24,23 @@ public class Sala {
         this.asientosOcupados = 0;
         this.cantidadAsientos = cantidadDeAsientos;
         this.numeroSala = numeroSala;
-        for (int i = 0 ; i <cantidadDeAsientos; i ++ ){
-            asientosSala.add(new Asiento(i, this));
-        }
         this.tipoSala = tipoSala;
     }
 
     public Sala() {}
 
-    public List<Asiento> getAsientosSala(int cantAsientos) {
-        List res = new ArrayList();
+    public int getAsientosSala(int cantAsientos) throws AsientosInsuficientesException {
         if(this.cantidadAsientos > asientosOcupados + cantAsientos) {
-            for (int i = 0; i < cantAsientos; i++) {
-                res.add(asientosSala.get(asientosOcupados));
-                asientosOcupados ++;
-            }
+            asientosOcupados = asientosOcupados + cantAsientos;
+            return cantAsientos;
         }
-
-        return res;
+        else{
+            throw new AsientosInsuficientesException("Queres reservar " + cantAsientos + " pero hay " + (cantidadAsientos-asientosOcupados) + " disponibles.");
+        }
     }
 
-    public void setAsientosSala(ArrayList<Asiento> asientosSala) {
-        this.asientosSala = asientosSala;
+    public void setAsientosSala(int asientosSala) {
+        this.cantidadAsientos = asientosSala;
     }
 
     public int getNumeroSala() {

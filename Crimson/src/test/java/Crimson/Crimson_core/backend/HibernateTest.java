@@ -1,8 +1,8 @@
 package Crimson.Crimson_core.backend;
 
-
 import Crimson.Crimson_core.*;
-import Crimson.Crimson_core.backend.dao.impl.HibernateGenericDAO;
+import Crimson.Crimson_core.backend.dao.impl.ReservaDAO;
+import Crimson.Crimson_core.backend.dao.impl.UsuarioDAO;
 import Crimson.Crimson_core.backend.service.TransactionRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,31 +11,36 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HibernateTest {
-    private Asiento asiento;
-    private HibernateGenericDAO hibernateDAO;
     private Sala sala;
+    private UsuarioDAO usuarioDAO;
+    private ReservaDAO reservaDAO;
+    private Sala sala1;
+    private Sala sala2;
     private Usuario usuario1;
     private Usuario usuario2;
-    private Pelicula pelicula;
+    private Pelicula pelicula1;
+    private Pelicula pelicula2;
     private Cartelera cartelera;
 
     @Before
     public void setUp() throws Exception {
-        sala = new Sala(30, 1, "2D");
+        usuarioDAO = new UsuarioDAO();
+        reservaDAO = new ReservaDAO();
+        sala1 = new Sala(30, 1, "2D");
+        sala2 = new Sala(20, 2, "3D");
         cartelera = new Cartelera();
         usuario1 = new Usuario("Miguel", 2566464, "Miguel@gmail.com");
         usuario2 = new Usuario("Juan", 45678, "juan@gmail.com");
-        pelicula = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", sala, cartelera );
+        pelicula1 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", sala1, cartelera );
+        pelicula2 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", "", sala2, cartelera );
     }
 
     @Test
     public void recuperarUsuario() {
-        hibernateDAO  = new HibernateGenericDAO(Usuario.class);
-
         TransactionRunner.runInSession(() -> {
-            hibernateDAO.add(usuario1);
+            usuarioDAO.add(usuario1);
 
-            Usuario usuarioGet = (Usuario) hibernateDAO.get(2566464);
+            Usuario usuarioGet = usuarioDAO.get(2566464);
 
             assertEquals(usuario1.getDni(), usuarioGet.getDni());
 
@@ -46,19 +51,24 @@ public class HibernateTest {
 
     @Test
     public void recuperarReserva() {
-        hibernateDAO = new HibernateGenericDAO(Usuario.class);
-        HibernateGenericDAO hibernateReservaDao = new HibernateGenericDAO(Reserva.class);
-
-
         TransactionRunner.runInSession(() -> {
-            usuario2.generarReserva(5, pelicula);
-            hibernateDAO.add(usuario2);
 
-            Reserva reservaGet = (Reserva) hibernateReservaDao.get(1L);
+            try {
+                usuario2.generarReserva(5, pelicula1);
+                usuario2.generarReserva(2, pelicula1);
+            } catch (AsientosInsuficientesException e) {
+                e.printStackTrace();
+            }
+            usuarioDAO.add(usuario2);
+
+            long reservaId = usuario2.getReservas().get(0).getId();
+
+            Reserva reservaGet = reservaDAO.get(reservaId);
 
             assertEquals(usuario2.getReservas().get(0), reservaGet);
 
             return null;
         });
     }
+
 }

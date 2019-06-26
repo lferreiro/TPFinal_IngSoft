@@ -22,7 +22,6 @@
 		
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
-		<mapping class="Crimson.Crimson_core.Asiento" />
 		<mapping class="Crimson.Crimson_core.Cartelera" />
 		<mapping class="Crimson.Crimson_core.Pelicula" />
 		<mapping class="Crimson.Crimson_core.Reserva" />
