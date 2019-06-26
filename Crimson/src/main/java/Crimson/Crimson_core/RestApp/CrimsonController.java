@@ -38,15 +38,15 @@ public class CrimsonController {
     @RequestMapping("/pelicula")
     public List<HPelicula> getPelicula() {
         HSala sala = new HSala(3, null, 30, 0, "2D");
-        HPelicula peli = new HPelicula("Aladdin", "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
+        HPelicula peli = new HPelicula("Aladdin", 0001, "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
         List<HPelicula> lista = new ArrayList<>();
         lista.add(peli);
         return lista;
     }
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
-    public HPelicula postPelicula(@RequestParam ("nombre") String nombre, @RequestParam("genero") String genero, @RequestParam("clasificacion") String clasificacion, @RequestParam ("sinopsis") String sinopsis) {
-        return new HPelicula(nombre, genero, clasificacion, sinopsis, null);
+    public HPelicula postPelicula(@RequestParam ("nombre") String nombre, @RequestParam("codigo") Integer codigo, @RequestParam("genero") String genero, @RequestParam("clasificacion") String clasificacion, @RequestParam ("sinopsis") String sinopsis) {
+        return new HPelicula(nombre, codigo, genero, clasificacion, sinopsis, null);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
