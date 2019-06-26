@@ -1,0 +1,18 @@
+.imgPrev {
+	width: 200px;
+	height: 200px;
+	align-self: center;
+}
+
+.cardPrev {
+	width: 300px;
+}
+
+.atributo {
+	color: #5959a7;
+	font-weight: 600;
+}
+
+.card-title {
+	color: #862626;
+}

@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Root from './Root.jsx';
 import Home from './principal/Home';
-import PreviewPelicula from './principal/PreviewPelicula';
+import DetallePelicula from './principal/DetallePelicula';
 
 class App extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Root>
           <Switch>
-            <Route path="/pelicula" component={PreviewPelicula} />
+            <Route path="/pelicula" component={DetallePelicula} />
             {/* <Route path="/login" component={Login} /> */}
             <Route exact path="/" component={Home} />
           </Switch>

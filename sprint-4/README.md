@@ -14,6 +14,8 @@ Estimacion para proximo sprint:
 
 	-Pantalla de reserva (5)
 	
+	-Post impacta la base de datos (3).
+	
 
 Estado de servidor de integracion continua:
  
