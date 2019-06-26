@@ -1,4 +1,3 @@
-/*
 package Crimson.Crimson_core.RestApp;
 
 import Crimson.Crimson_core.Cartelera;
@@ -59,4 +58,3 @@ public class CrimsonController {
 
 
 }
-*/
