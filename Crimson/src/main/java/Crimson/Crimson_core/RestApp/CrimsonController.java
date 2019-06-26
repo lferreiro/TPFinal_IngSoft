@@ -10,8 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class CrimsonController {
 
     private static final String template = "Esta es:";
@@ -33,9 +36,12 @@ public class CrimsonController {
 //    }
 
     @RequestMapping("/pelicula")
-    public HPelicula getPelicula() {
+    public List<HPelicula> getPelicula() {
         HSala sala = new HSala(3, null, 30, 0, "2D");
-        return new HPelicula("Aladdin", "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
+        HPelicula peli = new HPelicula("Aladdin", "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
+        List<HPelicula> lista = new ArrayList<>();
+        lista.add(peli);
+        return lista;
     }
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
