@@ -1,6 +1,6 @@
 import React from 'react';
 
-import API from '../../service/api';
+import API, { fakeDatos } from '../../service/api';
 
 export default class DetallePelicula extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class DetallePelicula extends React.Component {
 
   componentWillMount() {
     // this.traerDatos();
-    // this.traerTruchos();
+    this.traerTruchos();
   }
 
   componentDidMount() {
@@ -41,20 +41,30 @@ export default class DetallePelicula extends React.Component {
   }
 
   traerTruchos() {
-    API.fake()
-      .then(response => this.cargarDatos(response))
-      .catch();
+    this.cargarDatos(fakeDatos);
   }
 
   cargarDatos(datos) {
     this.setState({ pelicula: datos.pelicula, info: datos.info });
   }
 
+  renderizarProlijo(lista) {
+    return lista.map(item => (
+      <span>{item}</span>
+    ));
+  }
+
   render() {
     return (
       <div>
-        <h1>EEEOOO</h1>
-        <p>{this.state.pelicula.nombre}</p>
+        <div className="col col-show">
+          <div className="col col-show">
+            <h3><span className="atributo">Nombre: </span>{this.state.pelicula.nombre}</h3>
+            <h3><span className="atributo">Genero: </span>{this.state.pelicula.genero}</h3>
+            <h3><span className="atributo">Clasificacion: </span>{this.state.pelicula.clasificacion}</h3>
+            <h3><span className="atributo">Sinopsis: </span>{this.state.pelicula.sinopsis}</h3>
+          </div>
+        </div>
       </div>
     );
   }
