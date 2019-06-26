@@ -1,7 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import API from '../../service/api';
+
+import '../../dist/css/principal/PreviewPelicula.css';
 
 export default class PreviewPelicula extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export default class PreviewPelicula extends React.Component {
     this.state = {
       imagen: '/img/placeholder.png',
       nombre: this.props.nombre,
+      codigo: this.props.codigo,
       genero: this.props.genero,
       clasificacion: this.props.clasificacion,
       sinopsis: this.props.sinopsis,
@@ -28,23 +31,21 @@ export default class PreviewPelicula extends React.Component {
 
   render() {
     return (
-      <div className="card peli-card">
-        <img className="card-img-top" src={this.state.imagen} alt={`imagen de ${this.state.titulo}`} />
+      <div className="card peli-card cardPrev">
+        <img className="card-img-top imgPrev" src={this.state.imagen} alt={`imagen de ${this.state.nombre}`} />
         <div className="card-body">
-          <h5 className="card-title">{this.state.titulo}</h5>
-          <h5 className="card-title">Pelicula</h5>
+          <h5 className="card-title">{this.state.nombre}</h5>
           <p className="card-text">
-            {`Genero: ${this.state.genero}`} <br />
-            {`Nombre: ${this.state.nombre}`} <br />
-            {`Clasificacion: ${this.state.clasificacion}`} <br />
-            {`Sinopsis: ${this.state.sinopsis}`} <br />
-            {`Numero de sala: ${this.state.sala}`} <br />
+            <span className="atributo">Genero: </span>{this.state.genero} <br />
+            <span className="atributo">Clasificacion: </span>{this.state.clasificacion} <br />
+            <span className="atributo">Sinopsis: </span>{this.state.sinopsis} <br />
+            <span className="atributo">Numero de sala: </span>{`${this.state.sala}`} <br />
           </p>
-          {/* <Link
+          <Link
             className="btn btn-primary"
-            to={{ pathname: `/pelicula/${this.props.datos.codigo}`, state: { username: this.props.username } }}
+            to={{ pathname: `/pelicula/${this.state.codigo}`, state: { username: this.props.username } }}
           > Ver detalle
-          </Link> */}
+          </Link>
         </div>
       </div>);
   }

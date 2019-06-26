@@ -14,11 +14,8 @@ export default class Home extends React.Component {
 
   componentDidMount() {
     API.get('/pelicula')
-      .then((response) => {
-        this.cargarCartelera(response);
-        console.log(response);
-      })
-      .catch(this.falsificarCartelera());
+      .then(response => this.cargarCartelera(response));
+    // .catch(this.falsificarCartelera());
   }
 
   cargarCartelera(data) {
