@@ -51,7 +51,7 @@ export default class Home extends React.Component {
         <h1>Crimson</h1>
         <button type="button" onClick={() => this.probar()}>Probar algo</button>
         <h2>Cartelera</h2>
-        <Cartelera contenido={this.state.cartelera} />
+        <Cartelera contenido={this.state.cartelera} username={undefined} />
       </div>
     );
   }
