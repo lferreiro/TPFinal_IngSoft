@@ -18,14 +18,14 @@ public class CrimsonController {
     @Autowired
     private Intermodelo intermodelo;
 
-    @PostConstruct
-    public void initialize() {
-        DataLoader loader = new DataLoader();
-        Cartelera cartelera = new Cartelera();
-        loader.crearSetDeDatos(cartelera);
-        DataManager dataManager = new DataManager(cartelera);
-        Intermodelo intermodelo = new Intermodelo(dataManager);
-    }
+//    @PostConstruct
+//    public void initialize() {
+//        DataLoader loader = new DataLoader();
+//        Cartelera cartelera = new Cartelera();
+//        loader.crearSetDeDatos(cartelera);
+//        DataManager dataManager = new DataManager(cartelera);
+//        Intermodelo intermodelo = new Intermodelo(dataManager);
+//    }
 
 //    @RequestMapping("/cartelera")
 //    public List<HPelicula> getCartelera() {
