@@ -18,8 +18,6 @@ public class CrimsonController {
     @Autowired
     private Intermodelo intermodelo;
 
-    @GetMapping(path="/")
-
     @PostConstruct
     public void initialize() {
         DataLoader loader = new DataLoader();
