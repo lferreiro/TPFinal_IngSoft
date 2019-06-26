@@ -37,10 +37,10 @@ public class Sala {
 
     public List<Asiento> getAsientosSala(int cantAsientos) {
         List res = new ArrayList();
-        if(this.cantidadAsientos > asientosOcupados + cantAsientos) {
+        if(this.cantidadAsientos > this.asientosOcupados + cantAsientos) {
             for (int i = 0; i < cantAsientos; i++) {
-                res.add(asientosSala.get(asientosOcupados));
-                asientosOcupados ++;
+                res.add(this.asientosSala.get(this.asientosOcupados));
+                this.asientosOcupados ++;
             }
         }
 

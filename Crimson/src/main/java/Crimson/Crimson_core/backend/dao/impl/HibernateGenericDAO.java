@@ -24,4 +24,16 @@ public class HibernateGenericDAO<T> implements GenericDAO<T> {
         return session.get(entityClass, id);
     }
 
+    @Override
+    public void update(T entity) {
+        Session session = TransactionRunner.getCurrentSession();
+        session.update(entity);
+    }
+
+    @Override
+    public void delete(T entity) {
+        Session session = TransactionRunner.getCurrentSession();
+        session.delete(entity);
+    }
+
 }
