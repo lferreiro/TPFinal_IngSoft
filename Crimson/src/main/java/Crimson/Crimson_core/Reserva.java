@@ -14,15 +14,14 @@ public class Reserva {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToMany
-    private List<Asiento> asientos;
+    private int asientos;
 
     private int dniUsuario;
 
     private int numeroSala;
 
-    public Reserva(List<Asiento> asiento, int dniUser, int nSala){
-        this.asientos = asiento;
+    public Reserva(int asientos, int dniUser, int nSala){
+        this.asientos = asientos;
         this.dniUsuario = dniUser;
         this.numeroSala = nSala;
         this.date = new Date();
@@ -30,7 +29,7 @@ public class Reserva {
 
     public Reserva() {}
 
-    public List<Asiento> getAsientos() {
+    public int getAsientos() {
         return asientos;
     }
 

@@ -48,7 +48,7 @@ public class Usuario {
     }
 
 
-    public void generarReserva(int cantidadAsientos, Pelicula pelicula){
+    public void generarReserva(int cantidadAsientos, Pelicula pelicula) throws AsientosInsuficientesException{
         reservas.add(pelicula.reservarAsientos(cantidadAsientos, this.dni));
 
     }
@@ -57,7 +57,7 @@ public class Usuario {
         return this.reservas;
     }
 
-    public void generarReservaConFecha(int cantidadAsientos, Pelicula pelicula, Date dateTime) {
+    public void generarReservaConFecha(int cantidadAsientos, Pelicula pelicula, Date dateTime) throws AsientosInsuficientesException {
         Reserva reserva = pelicula.reservarAsientos(cantidadAsientos, this.dni);
         reserva.setDate(dateTime);
         this.reservas.add(reserva);

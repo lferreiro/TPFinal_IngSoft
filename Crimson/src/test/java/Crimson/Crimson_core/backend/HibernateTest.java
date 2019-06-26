@@ -11,7 +11,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HibernateTest {
-    private Asiento asiento;
     private HibernateGenericDAO hibernateDAO;
     private Sala sala;
     private Usuario usuario1;
@@ -51,7 +50,11 @@ public class HibernateTest {
 
 
         TransactionRunner.runInSession(() -> {
-            usuario2.generarReserva(5, pelicula);
+            try {
+                usuario2.generarReserva(5, pelicula);
+            } catch (AsientosInsuficientesException e) {
+                e.printStackTrace();
+            }
             hibernateDAO.add(usuario2);
 
             Reserva reservaGet = (Reserva) hibernateReservaDao.get(1L);

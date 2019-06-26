@@ -34,7 +34,8 @@ public class Pelicula {
 
     public Pelicula() {}
 
-    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario){
+    
+    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario) throws AsientosInsuficientesException {
         return new Reserva(this.sala.getAsientosSala(cantidadAsientos), dniUsuario ,sala.getNumeroSala());
     }
 
