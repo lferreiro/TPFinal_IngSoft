@@ -14,6 +14,7 @@ export default class Cartelera extends React.Component {
           <PreviewPelicula
             key={index}
             nombre={peli.nombre}
+            codigo={peli.codigo}
             genero={peli.genero}
             clasificacion={peli.clasificacion}
             sinopsis={peli.sinopsis}

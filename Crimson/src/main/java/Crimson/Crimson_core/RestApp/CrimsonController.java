@@ -2,6 +2,7 @@ package Crimson.Crimson_core.RestApp;
 
 import Crimson.Crimson_core.Cartelera;
 import Crimson.Crimson_core.Dummys.DataLoader;
+import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,12 @@ public class CrimsonController {
         List<HPelicula> lista = new ArrayList<>();
         lista.add(peli);
         return lista;
+    }
+
+    @RequestMapping("/<usuario>/peli/<codigo_peli>")
+    public DatosPeliUser getDatosPelicula() {
+        //TODO
+        return null;
     }
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
