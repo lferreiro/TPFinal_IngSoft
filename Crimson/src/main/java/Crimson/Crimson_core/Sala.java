@@ -27,6 +27,7 @@ public class Sala {
         this.tipoSala = tipoSala;
     }
 
+    public Sala() {}
 
     public int getAsientosSala(int cantAsientos) throws AsientosInsuficientesException {
         if(this.cantidadAsientos > asientosOcupados + cantAsientos) {

@@ -9,7 +9,7 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -31,6 +31,10 @@ public class Reserva {
 
     public int getAsientos() {
         return asientos;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public int getDniUsuario() {
