@@ -1,6 +1,5 @@
-package Crimson.Crimson_rest.JSON_Holders;
+package Crimson.Crimson_core.JSON_Holders;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HSala {

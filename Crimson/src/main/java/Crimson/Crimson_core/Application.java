@@ -1,4 +1,4 @@
-package Crimson.Crimson_rest.RestApp;
+package Crimson.Crimson_core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

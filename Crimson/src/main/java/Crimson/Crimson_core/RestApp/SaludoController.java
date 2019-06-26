@@ -1,11 +1,11 @@
-package Crimson.Crimson_rest.RestApp;
+package Crimson.Crimson_core.RestApp;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import Crimson.Crimson_rest.JSON_Holders.Saludo;
+import Crimson.Crimson_core.JSON_Holders.Saludo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class SaludoController {
