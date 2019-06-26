@@ -1,7 +1,15 @@
 import axios from 'axios';
 
 const server = 'http://localhost:8080'; // Server backend
-const fakeDatos = {
+
+const API = {
+  get: path => axios.get(`${server}${path}`).then(response => response.data),
+  put: (path, body) => axios.put(`${server}${path}`, body).then(response => response.data),
+  post: (path, body) => axios.post(`${server}${path}`, body).then(response => response.data),
+};
+
+export default API;
+export const fakeDatos = {
   pelicula: {
     nombre: 'Aladdin',
     codigo: 1,
@@ -21,12 +29,3 @@ const fakeDatos = {
     reservada: false,
   },
 };
-
-const API = {
-  get: path => axios.get(`${server}${path}`).then(response => response.data),
-  put: (path, body) => axios.put(`${server}${path}`, body).then(response => response.data),
-  post: (path, body) => axios.post(`${server}${path}`, body).then(response => response.data),
-  fake: () => fakeDatos,
-};
-
-export default API;
