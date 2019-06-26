@@ -12,9 +12,11 @@ Estimacion para proximo sprint:
 
 	-Pantalla de detalle pelicula (5)
 
-	-Pantalla de reserva (5)
+	-Get recupera valor de base de datos (2).
 	
 	-Post impacta la base de datos (3).
+	
+	-Cambios en el modelo y manejo de excepciones (2)
 	
 
 Estado de servidor de integracion continua:
