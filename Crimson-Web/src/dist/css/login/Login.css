@@ -1,0 +1,52 @@
+#login-h1, #entrar {
+  text-align: center;
+}
+
+#login-h1 h1 {
+  color: #ca2424;
+}
+
+img {
+  width: 24px;
+  height: 24px;
+}
+
+span {
+  width: 50px;
+  height: 38px;
+  justify-content: center;
+}
+
+input.form-control {
+  background-color: #d478a21f;
+}
+
+.prepend {  /*Esto es lo que aparece a la izquierda de los text inputs*/
+  background-color: #8c2f2f;
+}
+
+strong {
+  font-size: 150%;
+}
+
+#entrar .btn-primary {
+  background-color: #ec0e0e;
+  border: 5px outset #d23030;
+}
+
+#entrar .btn-primary:hover {
+  background-color: #a73e3e;
+  border: 5px solid #b4561800;
+}
+
+#entrar .btn-primary:active {
+  border: 5px groove #96191000;
+}
+
+#error {
+  display: none;
+}
+
+#error .col-show {
+  justify-content: center;
+}

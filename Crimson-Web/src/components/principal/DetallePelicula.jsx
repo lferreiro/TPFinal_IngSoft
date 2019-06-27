@@ -1,6 +1,7 @@
 import React from 'react';
 
 import API, { fakeDatos } from '../../service/api';
+import ModalReserva from './ModalReserva';
 
 export default class DetallePelicula extends React.Component {
   constructor(props) {
@@ -63,6 +64,7 @@ export default class DetallePelicula extends React.Component {
             <h3><span className="atributo">Genero: </span>{this.state.pelicula.genero}</h3>
             <h3><span className="atributo">Clasificacion: </span>{this.state.pelicula.clasificacion}</h3>
             <h3><span className="atributo">Sinopsis: </span>{this.state.pelicula.sinopsis}</h3>
+            <ModalReserva />
           </div>
         </div>
       </div>

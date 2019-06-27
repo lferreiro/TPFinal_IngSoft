@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Root from './Root.jsx';
 import Home from './principal/Home';
 import DetallePelicula from './principal/DetallePelicula';
+import Login from './login/Login';
 
 class App extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class App extends React.Component {
         <Root>
           <Switch>
             <Route path="/pelicula/:id" component={DetallePelicula} />
-            {/* <Route path="/login" component={Login} /> */}
+            <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </Switch>
         </Root>
