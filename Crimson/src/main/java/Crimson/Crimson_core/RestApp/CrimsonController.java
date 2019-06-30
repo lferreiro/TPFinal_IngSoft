@@ -10,9 +10,12 @@ import Crimson.Crimson_core.Sala;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +26,9 @@ public class CrimsonController {
     private static final String template = "Esta es:";
     @Autowired
     private Intermodelo intermodelo;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
 //    @PostConstruct
 //    public void initialize() {
@@ -65,20 +71,39 @@ public class CrimsonController {
 
     }
 
-    @RequestMapping(value = "/emailReserva", method = RequestMethod.PUT)
+    @RequestMapping(value = "/emailTest", method = RequestMethod.PUT)
     public void enviarEmail(){
 
-        EmailSender es = new EmailSender();
-        Sala sala1 = new Sala(200, 1, "2D");
-        Funcion funcion =  new Funcion(sala1, "10-6-19 8:00:00");
-        String emailUser = "miguelenriquebada07@gmail.com";
-        int dniUser = 123456;
-        es.sendEmail(emailUser, dniUser, funcion, "Caperucita Roja");
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("miguelenriquebada07@gmail.com");
 
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+
+        javaMailSender.send(msg);
 
     }
 
+    @RequestMapping(value = "/mailReserva", method = RequestMethod.PUT)
+    public void sendSimpleMessage(@RequestParam String email, @RequestParam int dniUsuario, @RequestParam String nombrePelicula){
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
 
+        msg.setSubject("Crimson reserva");
 
+        Sala sala1 = new Sala(200, 1, "2D");
+        Funcion funcion = new Funcion(sala1, "10-6-19 8:00:00");
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
+        String stringDate = sdf.format(funcion.getDate());
+
+        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + nombrePelicula + " en la sala numero " + funcion.getNumeroSala() + " y la reserva esta vinculada al DNI: " + dniUsuario);
+
+        javaMailSender.send(msg);
+
+    }
 }
+
+
+
+
