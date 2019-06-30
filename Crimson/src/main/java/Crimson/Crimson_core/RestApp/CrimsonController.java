@@ -2,9 +2,11 @@ package Crimson.Crimson_core.RestApp;
 
 import Crimson.Crimson_core.Cartelera;
 import Crimson.Crimson_core.Dummys.DataLoader;
+import Crimson.Crimson_core.Funcion;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
+import Crimson.Crimson_core.Sala;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +64,21 @@ public class CrimsonController {
         return new ResponseEntity(pelicula, HttpStatus.CREATED);
 
     }
+
+    @RequestMapping(value = "/emailReserva", method = RequestMethod.PUT)
+    public void enviarEmail(){
+
+        EmailSender es = new EmailSender();
+        Sala sala1 = new Sala(200, 1, "2D");
+        Funcion funcion =  new Funcion(sala1, "10-6-19 8:00:00");
+        String emailUser = "miguelenriquebada07@gmail.com";
+        int dniUser = 123456;
+        es.sendEmail(emailUser, dniUser, funcion, "Caperucita Roja");
+
+
+    }
+
+
 
 
 }

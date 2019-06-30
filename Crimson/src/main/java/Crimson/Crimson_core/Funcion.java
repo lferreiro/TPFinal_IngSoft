@@ -43,4 +43,6 @@ public class Funcion {
     public Sala getSala() {
         return this.sala;
     }
+
+    public Date getDate() {return this.horayFecha;}
 }
