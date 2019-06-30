@@ -35,7 +35,7 @@ public class PeliculaTest {
         formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
-        DataLoader dl = new DataLoader(new Cartelera());
+        DataLoader dl = new DataLoader(new Cartelera(new ArrayList<>()));
 
         carteleraTest = dl.getCartelera();
         peliculaTest1 = dl.getPelicula1();
