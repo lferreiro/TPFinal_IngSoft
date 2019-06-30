@@ -48,8 +48,8 @@ public class Usuario {
     }
 
 
-    public void generarReserva(int cantidadAsientos, Pelicula pelicula) throws AsientosInsuficientesException{
-        reservas.add(pelicula.reservarAsientos(cantidadAsientos, this.dni));
+    public void generarReserva(int cantidadAsientos, Pelicula pelicula, Funcion funcion) throws AsientosInsuficientesException{
+        reservas.add(pelicula.reservarAsientos(cantidadAsientos, this.dni, funcion));
 
     }
 
@@ -57,8 +57,8 @@ public class Usuario {
         return this.reservas;
     }
 
-    public void generarReservaConFecha(int cantidadAsientos, Pelicula pelicula, Date dateTime) throws AsientosInsuficientesException {
-        Reserva reserva = pelicula.reservarAsientos(cantidadAsientos, this.dni);
+    public void generarReservaConFecha(int cantidadAsientos, Pelicula pelicula, Date dateTime, Funcion funcion) throws AsientosInsuficientesException {
+        Reserva reserva = pelicula.reservarAsientos(cantidadAsientos, this.dni, funcion);
         reserva.setDate(dateTime);
         this.reservas.add(reserva);
     }

@@ -27,6 +27,7 @@
 		<mapping class="Crimson.Crimson_core.Reserva" />
 		<mapping class="Crimson.Crimson_core.Sala" />
 		<mapping class="Crimson.Crimson_core.Usuario" />
+		<mapping class="Crimson.Crimson_core.Funcion" />
 	
 	</session-factory>
 </hibernate-configuration>

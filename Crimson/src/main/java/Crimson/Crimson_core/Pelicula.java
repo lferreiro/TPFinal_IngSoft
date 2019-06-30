@@ -1,9 +1,8 @@
 package Crimson.Crimson_core;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pelicula {
@@ -20,15 +19,15 @@ public class Pelicula {
     @ManyToOne
     private Cartelera cartelera;
 
-    @OneToOne
-    private Sala sala;
+    @OneToMany
+    private List<Funcion> funciones = new ArrayList<>();
 
-    public Pelicula(String nombreP, String generoP, String clasificacionP, String sinopsis, Sala salaP, Cartelera carteleraP ){
+    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, Cartelera carteleraP, String sinopsis){
         this.nombre = nombreP;
         this.genero = generoP;
         this.clasificacion = clasificacionP;
         this.sinopsis = sinopsis;
-        this.sala = salaP;
+        this.funciones = funcionesP;
         this.cartelera = carteleraP;
     }
 
@@ -73,12 +72,12 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario) throws AsientosInsuficientesException {
-        return new Reserva(this.sala.getAsientosSala(cantidadAsientos), dniUsuario ,sala.getNumeroSala());
+    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario, Funcion funcion) throws AsientosInsuficientesException {
+        return new Reserva(funcion.getAsientosSala(cantidadAsientos), dniUsuario ,funcion.getNumeroSala());
     }
 
-    public Sala getSala(){
-        return sala;
+    public Sala getSala(Funcion funcion){
+        return funcion.getSala();
     }
 
 
