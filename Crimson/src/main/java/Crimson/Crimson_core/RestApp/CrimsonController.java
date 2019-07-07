@@ -1,16 +1,15 @@
 package Crimson.Crimson_core.RestApp;
 
-import Crimson.Crimson_core.Cartelera;
-import Crimson.Crimson_core.Dummys.DataLoader;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
+import Crimson.Crimson_core.Pelicula;
+import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,8 @@ public class CrimsonController {
     private static final String template = "Esta es:";
     @Autowired
     private Intermodelo intermodelo;
+    @Autowired
+    private PeliculaRepository peliculaRepository;
 
 //    @PostConstruct
 //    public void initialize() {
@@ -31,10 +32,23 @@ public class CrimsonController {
 //        Intermodelo intermodelo = new Intermodelo(dataManager);
 //    }
 
-//    @RequestMapping("/cartelera")
-//    public List<HPelicula> getCartelera() {
-//
-//    }
+    @GetMapping(path = "/cartelera")
+    public @ResponseBody Iterable<Pelicula> getAllPeliculas() {
+        return peliculaRepository.findAll();
+    }
+
+    @GetMapping(path="/addPelicula") // Map ONLY GET Requests
+    public @ResponseBody String addNewPelicula (@RequestParam String name
+            , @RequestParam String genero, @RequestParam String clasificacion, @RequestParam String sinopsis) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+        Pelicula pelicula = new Pelicula(name, genero, clasificacion, sinopsis);
+
+        peliculaRepository.save(pelicula);
+
+        return "Saved";
+    }
 
     @RequestMapping("/pelicula")
     public List<HPelicula> getPelicula() {
