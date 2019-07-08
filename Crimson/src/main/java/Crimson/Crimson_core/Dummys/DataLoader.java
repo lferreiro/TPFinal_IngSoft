@@ -22,6 +22,27 @@ public class DataLoader {
     private Funcion funcion3;
     private Funcion funcion4;
     private Funcion funcion5;
+    private Funcion funcion6;
+    private Funcion funcion7;
+    private Funcion funcion8;
+    private Funcion funcion9;
+    private Funcion funcion10;
+    private Funcion funcion11;
+    private Funcion funcion12;
+    private Funcion funcion13;
+    private Funcion funcion14;
+    private Funcion funcion15;
+    private Funcion funcion16;
+    private Funcion funcion17;
+    private Funcion funcion18;
+    private Funcion funcion19;
+    private Funcion funcion20;
+    private Funcion funcion21;
+    private Funcion funcion22;
+    private Funcion funcion23;
+    private Funcion funcion24;
+    private Funcion funcion25;
+
     private Sala sala1;
     private Sala sala2;
     private Sala sala3;
@@ -46,22 +67,61 @@ public class DataLoader {
         List<Funcion> listFunciones5 = new ArrayList<>();
 
         funcion1 = new Funcion(sala1, "10-6-19 8:00:00"); //LA FECHA ESTA EN FORMATO dd-MM-yy hh:MM-ss
-        funcion2 = new Funcion(sala2, "13-6-19 8:00:00");
-        funcion3 = new Funcion(sala3, "15-6-19 8:00:00");
-        funcion4 = new Funcion(sala4, "17-6-19 8:00:00");
-        funcion5 = new Funcion(sala5, "22-6-19 8:00:00");
-        listFunciones1.add(funcion1);
-        listFunciones2.add(funcion2);
-        listFunciones3.add(funcion3);
-        listFunciones4.add(funcion4);
-        listFunciones5.add(funcion5);
+        funcion2 = new Funcion(sala1, "10-6-19 12:00:00");
+        funcion3 = new Funcion(sala1, "10-6-19 16:00:00");
+        funcion4 = new Funcion(sala1, "10-6-19 20:00:00");
+        funcion5 = new Funcion(sala1, "11-6-19 0:00:00");
+        funcion6 = new Funcion(sala2, "13-6-19 8:00:00");
+        funcion7 = new Funcion(sala2, "13-6-19 13:00:00");
+        funcion8 = new Funcion(sala2, "13-6-19 16:00:00");
+        funcion9 = new Funcion(sala2, "13-6-19 19:00:00");
+        funcion10 = new Funcion(sala2, "13-6-19 22:00:00");
+        funcion11 = new Funcion(sala3, "15-6-19 13:30:00");
+        funcion12 = new Funcion(sala3, "15-6-19 17:00:00");
+        funcion13 = new Funcion(sala3, "15-6-19 20:30:00");
+        funcion14 = new Funcion(sala3, "15-6-19 23:00:00");
+        funcion15 = new Funcion(sala3, "15-6-19 8:00:00");
+        funcion16 = new Funcion(sala4, "17-6-19 8:00:00");
+        funcion17 = new Funcion(sala4, "17-6-19 8:00:00");
+        funcion18 = new Funcion(sala4, "17-6-19 8:00:00");
+        funcion19 = new Funcion(sala4, "17-6-19 8:00:00");
+        funcion20 = new Funcion(sala4, "17-6-19 8:00:00");
+        funcion21 = new Funcion(sala5, "22-6-19 8:00:00");
+        funcion22 = new Funcion(sala5, "22-6-19 15:00:00");
+        funcion23 = new Funcion(sala5, "22-6-19 22:00:00");
+        funcion24 = new Funcion(sala5, "23-6-19 8:00:00");
+        funcion25 = new Funcion(sala5, "23-6-19 15:00:00");
 
-        /*pelicula1 = new Pelicula("Aladdin", "Aventura Romantica", "ATP", listFunciones1, cartelera, "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado");
-        pelicula2 = new Pelicula("Detective Pikachu", "Aventura", "ATP" , listFunciones2, cartelera, "Cuando el gran detective privado Harry Goodman desaparece misteriosamente; Tim, su hijo de 21 años, debe averiguar qué sucedió. En la investigación lo ayuda el antiguo compañero Pokémon de Harry, el Detective Pikachu: un super detective adorable y ocurrente que se asombra incluso a sí mismo. Tim y Pikachu se dan cuenta que increíblemente pueden comunicarse, y unen fuerzas en una aventura para develar el misterio enmarañado. Mientras buscan pistas en las calles resplandecientes de Ryme City, una vasta metrópolis moderna donde los humanos y los Pokémon comparten un mundo real hiperrealista, encuentran distintos personajes Pokémon y descubren un complot impactante que podría destruir la convivencia pacífica y amenazar a todo el universo Pokémon.");
-        pelicula3 = new Pelicula("Avengers Endgame", "Accion", "+13", listFunciones3,cartelera, "Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles son las consecuencias... Cuarta y última entrega de la saga Vengadores");
-        pelicula4 = new Pelicula("John Wick 3", "Accion", "+16", listFunciones4, cartelera, "John Wick (Keanu Reeves) regresa a la acción, solo que esta vez con una recompensa de 14 millones de dólares sobre su cabeza y con un ejército de mercenarios intentando darle caza. Tras asesinar a uno de los miembros del gremio de asesinos al que pertenecía, Wick es expulsado de la organización, pasando a convertirse en el centro de atención de multitud de asesinos a sueldo que esperan detrás de cada esquina para tratar de deshacerse de él. ");
-        pelicula5 = new Pelicula("Godzilla 2", "Ciencia Ficcion", "+13", listFunciones5, cartelera, "Godzilla: Rey de los Monstruos sigue los heroícos esfuerzos de los criptozoólogos de la agencia Monarch mientras tratan de enfrentrarse contra un grupo de enormes monstruos, incluyendo el propio Godzilla. Entre todos intentan resistir a las embestidas de Mothra, Rodan o del último némesis de la humanidad: King Ghidorah. Estas ancianas criaturas harán todo lo posible por sobrevivir, poniendo en riesgo la existencia del ser humano en el planeta.");
-*/
+
+
+        listFunciones1.add(funcion1);
+        listFunciones1.add(funcion2);
+        listFunciones1.add(funcion3);
+        listFunciones1.add(funcion4);
+        listFunciones1.add(funcion5);
+        listFunciones2.add(funcion6);
+        listFunciones2.add(funcion7);
+        listFunciones2.add(funcion8);
+        listFunciones2.add(funcion9);
+        listFunciones2.add(funcion10);
+        listFunciones3.add(funcion11);
+        listFunciones3.add(funcion12);
+        listFunciones3.add(funcion13);
+        listFunciones3.add(funcion14);
+        listFunciones3.add(funcion15);
+        listFunciones4.add(funcion16);
+        listFunciones4.add(funcion17);
+        listFunciones4.add(funcion18);
+        listFunciones4.add(funcion19);
+        listFunciones4.add(funcion20);
+        listFunciones5.add(funcion21);
+        listFunciones5.add(funcion22);
+        listFunciones5.add(funcion23);
+        listFunciones5.add(funcion24);
+        listFunciones5.add(funcion25);
+
+
+
         pelicula1 = new Pelicula("Aladdin", "Aventura Romantica", "ATP", listFunciones1, cartelera, "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán");
         pelicula2 = new Pelicula("Detective Pikachu", "Aventura", "ATP" , listFunciones2, cartelera, "Cuando el gran detective privado Harry Goodman desaparece misteriosamente; Tim, su hijo de 21 años.");
         pelicula3 = new Pelicula("Avengers Endgame", "Accion", "+13", listFunciones3,cartelera, "Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos.");
