@@ -12,8 +12,8 @@ public class DataManager {
 
     public DataManager() {}
 
-//    public DataManager(Cartelera cartelera) {
-//        this.cartelera = cartelera;
-//    }
+    public void setCartelera(Cartelera cartelera) {
+        this.cartelera = cartelera;
+    }
 
 }

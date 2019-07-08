@@ -3,6 +3,7 @@ package Crimson.Crimson_core;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,9 @@ public class Cartelera {
         this.peliculaList = peliculas;
     }
 
-    public Cartelera() {}
+    public Cartelera() {
+        this.peliculaList = new ArrayList<>();
+    }
 
     public void agregarPelicula(Pelicula pelicula){
         this.peliculaList.add(pelicula);
