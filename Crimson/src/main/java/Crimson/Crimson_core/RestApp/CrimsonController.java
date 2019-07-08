@@ -7,7 +7,6 @@ import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.Pelicula;
-import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.backend.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
