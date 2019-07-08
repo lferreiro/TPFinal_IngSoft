@@ -14,13 +14,13 @@ public class Intermodelo {
 
     public Intermodelo() {}
 
+//    public Intermodelo(DataManager dataManager) {
+//        this.dataManager = dataManager;
+//    }
+
     //Prop: devuelve la cartelera del sistema en modo simplificado.
     public List<HPelicula> cartelera() {
         return null;
-    }
-
-    public void setDataManager(DataManager dataManager) {
-        this.dataManager = dataManager;
     }
 
 }
