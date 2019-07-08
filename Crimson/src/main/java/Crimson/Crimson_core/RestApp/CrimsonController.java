@@ -1,13 +1,14 @@
 package Crimson.Crimson_core.RestApp;
 
 
-import Crimson.Crimson_core.Funcion;
+import Crimson.Crimson_core.*;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
-import Crimson.Crimson_core.Sala;
+import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.Pelicula;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
+import Crimson.Crimson_core.backend.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,8 @@ public class CrimsonController {
 
     private static final String template = "Esta es:";
     @Autowired
-    private Intermodelo intermodelo;
+    private ReservaRepository reservaRepository;
+
     @Autowired
     private PeliculaRepository peliculaRepository;
 
@@ -59,6 +61,12 @@ public class CrimsonController {
         return "Saved";
     }
 
+    @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
+    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva, @RequestParam String email, @RequestParam String nombrePelicula, @RequestParam String funcion) {
+        reservaRepository.save(reserva);
+        return new ResponseEntity(reserva, HttpStatus.CREATED);
+    }
+
     @RequestMapping("/pelicula")
     public List<HPelicula> getPelicula() {
         HSala sala = new HSala(3, null, 30, 0, "2D");
@@ -79,9 +87,9 @@ public class CrimsonController {
         return new HPelicula(nombre, codigo, genero, clasificacion, sinopsis, null);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity createPelicula(@RequestBody HPelicula pelicula){
-
+    @RequestMapping(value = "/agregarPelicula", method = RequestMethod.POST)
+    public ResponseEntity createPelicula(@RequestBody Pelicula pelicula){
+        peliculaRepository.save(pelicula);
         return new ResponseEntity(pelicula, HttpStatus.CREATED);
 
     }
