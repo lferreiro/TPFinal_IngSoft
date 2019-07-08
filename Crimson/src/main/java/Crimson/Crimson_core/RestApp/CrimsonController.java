@@ -1,7 +1,5 @@
 package Crimson.Crimson_core.RestApp;
 
-import Crimson.Crimson_core.Cartelera;
-import Crimson.Crimson_core.Dummys.DataLoader;
 import Crimson.Crimson_core.Funcion;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
@@ -14,7 +12,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,20 +21,13 @@ import java.util.List;
 public class CrimsonController {
 
     private static final String template = "Esta es:";
+
     @Autowired
     private Intermodelo intermodelo;
-
     @Autowired
     private JavaMailSender javaMailSender;
 
-//    @PostConstruct
-//    public void initialize() {
-//        DataLoader loader = new DataLoader();
-//        Cartelera cartelera = new Cartelera();
-//        loader.crearSetDeDatos(cartelera);
-//        DataManager dataManager = new DataManager(cartelera);
-//        Intermodelo intermodelo = new Intermodelo(dataManager);
-//    }
+    public CrimsonController() {}
 
 //    @RequestMapping("/cartelera")
 //    public List<HPelicula> getCartelera() {
@@ -102,8 +92,9 @@ public class CrimsonController {
         javaMailSender.send(msg);
 
     }
+
+    public void setIntermodelo(Intermodelo intermodelo) {
+        this.intermodelo = intermodelo;
+    }
+
 }
-
-
-
-
