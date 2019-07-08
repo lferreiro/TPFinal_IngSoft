@@ -62,8 +62,9 @@ public class CrimsonController {
     }
 
     @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
-    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva, @RequestParam String email, @RequestParam String nombrePelicula, @RequestParam String funcion) {
+    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva) {
         reservaRepository.save(reserva);
+        this.mailReserva(reserva);
         return new ResponseEntity(reserva, HttpStatus.CREATED);
     }
 
@@ -108,19 +109,18 @@ public class CrimsonController {
     }
 
     @RequestMapping(value = "/mailReserva", method = RequestMethod.PUT)
-    public void sendSimpleMessage(@RequestParam String email, @RequestParam int dniUsuario, @RequestParam String nombrePelicula){
+    public void mailReserva(@RequestBody Reserva reserva ){
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(email);
+        msg.setTo(reserva.getEmailReserva());
 
         msg.setSubject("Crimson reserva");
 
         Sala sala1 = new Sala(200, 1, "2D");
-        Funcion funcion = new Funcion(sala1, "10-6-19 8:00:00");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
-        String stringDate = sdf.format(funcion.getDate());
+        String stringDate = sdf.format(reserva.getFuncion().getDate());
 
-        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + nombrePelicula + " en la sala numero " + funcion.getNumeroSala() + " y la reserva esta vinculada al DNI: " + dniUsuario);
+        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + reserva.getNombrePelicula() + " en la sala numero " + reserva.getFuncion().getNumeroSala() + " y la reserva esta vinculada al DNI: " + reserva.getDniUsuario());
 
         javaMailSender.send(msg);
 
