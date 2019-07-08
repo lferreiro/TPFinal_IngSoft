@@ -61,7 +61,7 @@ public class PeliculaTest {
     public void testUsuarioGeneraUnaReservaParaUnaPelicula() throws AsientosInsuficientesException {
 
         Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
-        usuarioTest.generarReserva(3, peliculaTest1, funcion1);
+        usuarioTest.generarReserva(3, peliculaTest1, funcion1, "xd@gmail.com");
         assertTrue(usuarioTest.getReservas().size() == 1);
         assertEquals(usuarioTest.getReservas().get(0).getDniUsuario(), usuarioTest.getDni());
         assertEquals(usuarioTest.getReservas().get(0).getNumeroSala(), peliculaTest1.getSala(funcion1).getNumeroSala());
@@ -99,7 +99,7 @@ public class PeliculaTest {
     public void usuarioReservaAsientosParaUnaPeliculaYLosAsientosOcupadosDeLaSalaAumentan() throws AsientosInsuficientesException {
 
         Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
-        usuarioTest.generarReserva(3, peliculaTest2, funcion2);
+        usuarioTest.generarReserva(3, peliculaTest2, funcion2, "xd@gmail.com");
         Sala salaPelicula = peliculaTest2.getSala(funcion2);
         assertEquals(salaPelicula.getAsientosOcupados(), 3);
 

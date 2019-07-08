@@ -1,26 +1,36 @@
 package Crimson.Crimson_core;
 
 import Crimson.Crimson_core.Dummys.DataLoader;
-import Crimson.Crimson_core.RestApp.CrimsonController;
-import Crimson.Crimson_core.RestApp.DataManager;
-import Crimson.Crimson_core.RestApp.Intermodelo;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import Crimson.Crimson_core.backend.service.CarteleraService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Application {
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    CarteleraService carteleraService;
+
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        SpringApplication.run(Application.class, args);
+    }
 
-        CrimsonController controller = (CrimsonController) context.getBean("crimsonController");
-        Cartelera cartelera = (Cartelera) context.getBean("cartelera");
-        DataLoader loader = (DataLoader) context.getBean("dataLoader");
-        DataManager manager = (DataManager) context.getBean("dataManager");
-        Intermodelo intermodelo = (Intermodelo) context.getBean("intermodelo");
+    @Override
+    public void run(String... args) throws Exception {
+        List<Pelicula> peliculas = new DataLoader(new Cartelera(new ArrayList<>())).getCartelera().getPeliculas();
 
-        loader.setCartelera(cartelera);
-        loader.rellenar();
-        manager.setCartelera(cartelera);
-        intermodelo.setDataManager(manager);
-        controller.setIntermodelo(intermodelo);
+        for(Pelicula pelicula: peliculas) {
+            String nombre = pelicula.getNombre();
+            String genero = pelicula.getGenero();
+            String clasificacion = pelicula.getClasificacion();
+            String sinopsis = pelicula.getSinopsis();
+
+            carteleraService.addPelicula(nombre, genero, clasificacion, sinopsis);
+        }
     }
 }
+

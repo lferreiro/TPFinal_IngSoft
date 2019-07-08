@@ -66,8 +66,8 @@ public class HibernateTest {
         TransactionRunner.runInSession(() -> {
 
             try {
-                usuario2.generarReserva(5, pelicula1, funcion1);
-                usuario2.generarReserva(2, pelicula1,funcion1);
+                usuario2.generarReserva(5, pelicula1, funcion1, "");
+                usuario2.generarReserva(2, pelicula1,funcion1, "");
             } catch (AsientosInsuficientesException e) {
                 e.printStackTrace();
             }

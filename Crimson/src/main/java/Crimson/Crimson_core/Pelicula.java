@@ -72,8 +72,8 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario, Funcion funcion) throws AsientosInsuficientesException {
-        return new Reserva(funcion.getAsientosSala(cantidadAsientos), dniUsuario ,funcion.getNumeroSala());
+    public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario, Funcion funcion, String email) throws AsientosInsuficientesException {
+        return new Reserva(funcion.getAsientosSala(cantidadAsientos), dniUsuario, email, this.getNombre(), funcion);
     }
 
     public Sala getSala(Funcion funcion){
