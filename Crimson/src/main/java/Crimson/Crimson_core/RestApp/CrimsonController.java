@@ -1,7 +1,6 @@
 package Crimson.Crimson_core.RestApp;
 
-import Crimson.Crimson_core.Cartelera;
-import Crimson.Crimson_core.Dummys.DataLoader;
+
 import Crimson.Crimson_core.Funcion;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
@@ -16,7 +15,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
