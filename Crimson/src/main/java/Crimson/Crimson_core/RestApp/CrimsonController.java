@@ -1,15 +1,22 @@
 package Crimson.Crimson_core.RestApp;
 
+
+import Crimson.Crimson_core.*;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
+import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.Pelicula;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
+import Crimson.Crimson_core.backend.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +26,13 @@ public class CrimsonController {
 
     private static final String template = "Esta es:";
     @Autowired
-    private Intermodelo intermodelo;
+    private ReservaRepository reservaRepository;
+
     @Autowired
     private PeliculaRepository peliculaRepository;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
 //    @PostConstruct
 //    public void initialize() {
@@ -50,6 +61,12 @@ public class CrimsonController {
         return "Saved";
     }
 
+    @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
+    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva, @RequestParam String email, @RequestParam String nombrePelicula, @RequestParam String funcion) {
+        reservaRepository.save(reserva);
+        return new ResponseEntity(reserva, HttpStatus.CREATED);
+    }
+
     @RequestMapping("/pelicula")
     public List<HPelicula> getPelicula() {
         HSala sala = new HSala(3, null, 30, 0, "2D");
@@ -70,12 +87,46 @@ public class CrimsonController {
         return new HPelicula(nombre, codigo, genero, clasificacion, sinopsis, null);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity createPelicula(@RequestBody HPelicula pelicula){
-
+    @RequestMapping(value = "/agregarPelicula", method = RequestMethod.POST)
+    public ResponseEntity createPelicula(@RequestBody Pelicula pelicula){
+        peliculaRepository.save(pelicula);
         return new ResponseEntity(pelicula, HttpStatus.CREATED);
 
     }
 
+    @RequestMapping(value = "/emailTest", method = RequestMethod.PUT)
+    public void enviarEmail(){
 
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("miguelenriquebada07@gmail.com");
+
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+
+        javaMailSender.send(msg);
+
+    }
+
+    @RequestMapping(value = "/mailReserva", method = RequestMethod.PUT)
+    public void sendSimpleMessage(@RequestParam String email, @RequestParam int dniUsuario, @RequestParam String nombrePelicula){
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+
+        msg.setSubject("Crimson reserva");
+
+        Sala sala1 = new Sala(200, 1, "2D");
+        Funcion funcion = new Funcion(sala1, "10-6-19 8:00:00");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
+        String stringDate = sdf.format(funcion.getDate());
+
+        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + nombrePelicula + " en la sala numero " + funcion.getNumeroSala() + " y la reserva esta vinculada al DNI: " + dniUsuario);
+
+        javaMailSender.send(msg);
+
+    }
 }
+
+
+
+
