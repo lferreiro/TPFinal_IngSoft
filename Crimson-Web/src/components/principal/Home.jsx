@@ -13,7 +13,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    API.get('/pelicula')
+    API.get('/cartelera')
       .then(response => this.cargarCartelera(response));
     // .catch(this.falsificarCartelera());
   }
