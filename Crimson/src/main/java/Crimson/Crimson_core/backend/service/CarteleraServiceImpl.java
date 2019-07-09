@@ -1,5 +1,7 @@
 package Crimson.Crimson_core.backend.service;
 
+import Crimson.Crimson_core.Cartelera;
+import Crimson.Crimson_core.Funcion;
 import Crimson.Crimson_core.Pelicula;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,8 @@ public class CarteleraServiceImpl implements CarteleraService {
     }
 
     @Override
-    public void addPelicula(String name, String genero, String clasificacion, String sinopsis) {
-        Pelicula pelicula = new Pelicula(name, genero, clasificacion, sinopsis);
+    public void addPelicula(String name, String genero, String clasificacion, List<Funcion> funciones, String sinopsis) {
+        Pelicula pelicula = new Pelicula(name, genero, clasificacion, funciones, sinopsis);
 
         peliculaRepository.save(pelicula);
 
