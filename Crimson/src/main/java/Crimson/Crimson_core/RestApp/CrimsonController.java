@@ -48,11 +48,11 @@ public class CrimsonController {
 
     @GetMapping(path="/addPelicula") // Map ONLY GET Requests
     public @ResponseBody String addNewPelicula (@RequestParam String name
-            , @RequestParam String genero, @RequestParam String clasificacion, @RequestParam String sinopsis) {
+            , @RequestParam String genero, @RequestParam String clasificacion,@RequestParam String trailer, @RequestParam String imagen ,@RequestParam String sinopsis) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        Pelicula pelicula = new Pelicula(name, genero, clasificacion, new ArrayList<Funcion>(), sinopsis);
+        Pelicula pelicula = new Pelicula(name, genero, clasificacion, new ArrayList<Funcion>(), trailer, imagen, sinopsis);
 
         peliculaRepository.save(pelicula);
 

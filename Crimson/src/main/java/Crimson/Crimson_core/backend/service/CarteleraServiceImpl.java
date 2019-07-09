@@ -28,8 +28,8 @@ public class CarteleraServiceImpl implements CarteleraService {
     }
 
     @Override
-    public void addPelicula(String name, String genero, String clasificacion, List<Funcion> funciones, String sinopsis) {
-        Pelicula pelicula = new Pelicula(name, genero, clasificacion, funciones, sinopsis);
+    public void addPelicula(String name, String genero, String clasificacion, List<Funcion> funciones, String trailer, String imagen, String sinopsis) {
+        Pelicula pelicula = new Pelicula(name, genero, clasificacion, funciones, trailer, imagen ,sinopsis);
 
         peliculaRepository.save(pelicula);
 

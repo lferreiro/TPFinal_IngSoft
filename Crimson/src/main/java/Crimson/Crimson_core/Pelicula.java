@@ -16,24 +16,32 @@ public class Pelicula {
 
     private String sinopsis;
 
+    private String trailer;
+
+    private String imagen;
+
     @ManyToOne(cascade=CascadeType.ALL)
     private Cartelera cartelera;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Funcion> funciones = new ArrayList<>();
 
-    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, Cartelera carteleraP, String sinopsis){
+    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, Cartelera carteleraP, String trailer, String imagen,String sinopsis){
         this.nombre = nombreP;
         this.genero = generoP;
+        this.trailer = trailer;
+        this.imagen = imagen;
         this.clasificacion = clasificacionP;
         this.sinopsis = sinopsis;
         this.funciones = funcionesP;
         this.cartelera = carteleraP;
     }
 
-    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, String sinopsis) {
+    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, String trailer, String imagen ,String sinopsis) {
         this.nombre = nombreP;
         this.genero = generoP;
+        this.trailer = trailer;
+        this.imagen = imagen;
         this.clasificacion = clasificacionP;
         this.funciones = funcionesP;
         this.sinopsis = sinopsis;
@@ -98,4 +106,19 @@ public class Pelicula {
     }
 
 
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

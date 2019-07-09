@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CarteleraService {
     public List<Pelicula> getCartelera();
-    public void addPelicula(String name, String genero, String clasificacion, List<Funcion> funciones, String sinopsis);
+    public void addPelicula(String name, String genero, String clasificacion, List<Funcion> funciones, String trailer, String imagen ,String sinopsis);
 }
