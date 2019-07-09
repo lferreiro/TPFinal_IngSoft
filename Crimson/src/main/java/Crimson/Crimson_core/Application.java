@@ -27,9 +27,11 @@ public class Application implements CommandLineRunner {
             String nombre = pelicula.getNombre();
             String genero = pelicula.getGenero();
             String clasificacion = pelicula.getClasificacion();
+            List<Funcion> funciones = pelicula.getFunciones();
+
             String sinopsis = pelicula.getSinopsis();
 
-            carteleraService.addPelicula(nombre, genero, clasificacion, sinopsis);
+            carteleraService.addPelicula(nombre, genero, clasificacion, funciones, sinopsis);
         }
     }
 }
