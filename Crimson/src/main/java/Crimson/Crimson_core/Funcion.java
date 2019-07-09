@@ -1,5 +1,7 @@
 package Crimson.Crimson_core;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,9 +14,10 @@ public class Funcion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToOne
+    @OneToOne (cascade=CascadeType.ALL)
     private Sala sala;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yy hh:mm:ss")
     private Date horayFecha;
 
     public Funcion() {}

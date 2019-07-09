@@ -107,13 +107,11 @@ public class CrimsonController {
     }
 
     @RequestMapping(value = "/mailReserva", method = RequestMethod.PUT)
-    public void mailReserva(@RequestBody Reserva reserva ){
+    public void mailReserva(Reserva reserva ){
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(reserva.getEmailReserva());
 
         msg.setSubject("Crimson reserva");
-
-        Sala sala1 = new Sala(200, 1, "2D");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
         String stringDate = sdf.format(reserva.getFuncion().getDate());

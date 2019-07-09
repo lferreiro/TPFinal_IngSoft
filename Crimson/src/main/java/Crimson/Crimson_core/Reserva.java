@@ -13,9 +13,6 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
-
     private int asientos;
 
     private int dniUsuario;
@@ -36,7 +33,6 @@ public class Reserva {
         this.emailReserva = emailReserva;
         this.nombrePelicula = nombre;
         this.funcionReservada = funcion;
-        this.date = new Date();
     }
 
     public Reserva() {}
@@ -63,11 +59,31 @@ public class Reserva {
 
     public String getEmailReserva() {return emailReserva; }
 
-    public Date getDate() {
-        return this.date;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setAsientos(int asientos) {
+        this.asientos = asientos;
+    }
+
+    public void setDniUsuario(int dniUsuario) {
+        this.dniUsuario = dniUsuario;
+    }
+
+    public void setNumeroSala(int numeroSala) {
+        this.numeroSala = numeroSala;
+    }
+
+    public void setEmailReserva(String emailReserva) {
+        this.emailReserva = emailReserva;
+    }
+
+    public void setNombrePelicula(String nombrePelicula) {
+        this.nombrePelicula = nombrePelicula;
+    }
+
+    public void setFuncionReservada(Funcion funcionReservada) {
+        this.funcionReservada = funcionReservada;
     }
 }
