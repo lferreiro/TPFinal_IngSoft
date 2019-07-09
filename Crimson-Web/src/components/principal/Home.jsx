@@ -13,7 +13,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    API.get('/pelicula')
+    API.get('/cartelera')
       .then(response => this.cargarCartelera(response));
     // .catch(this.falsificarCartelera());
   }
@@ -29,13 +29,7 @@ export default class Home extends React.Component {
         genero: 'Aventura Romantica',
         clasificacion: 'ATP',
         sinopsis: 'Pasan cosas',
-        sala: {
-          numeroSala: 3,
-          asientosSala: undefined,
-          cantidadAsientos: 30,
-          asientosOcupados: 0,
-          tipoSala: '2D',
-        },
+        imagen: 'https://media.kitag.com/filer_public_thumbnails/cinepool/assets/movies/1012.351/artworks/bad5a957cacaa4b7749fc5003ea9aa2bc6eae21b/lrg.png__650x935_q70.jpg',
       },
     ];
     this.setState({ cartelera: falsos });

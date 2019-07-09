@@ -42,8 +42,8 @@ public class HibernateTest {
         cartelera = new Cartelera();
         usuario1 = new Usuario("Miguel", 2566464, "Miguel@gmail.com");
         usuario2 = new Usuario("Juan", 45678, "juan@gmail.com");
-        pelicula1 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", funciones1, cartelera, "");
-        pelicula2 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", funciones2,  cartelera, "" );
+        pelicula1 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", funciones1, cartelera, "", "","");
+        pelicula2 = new Pelicula("Scott Pilgrim vs The World", "Comedia", "+13", funciones2,  cartelera, "","","" );
 
     }
 

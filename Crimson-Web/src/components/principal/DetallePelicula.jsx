@@ -7,20 +7,12 @@ export default class DetallePelicula extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pelicula: {
-        imagen: '/img/placeholder.png',
-        nombre: '<NO DISPONIBLE>',
-        codigo: -1,
-        genero: '<NO DISPONIBLE>',
-        clasificacion: '<NO DISPONIBLE>',
-        sinopsis: '<NO DISPONIBLE>',
-        sala: undefined,
-      },
-      info: {
-        vista: false,
-        reservada: false,
-      },
-      reservas: [],
+      nombre: '<NO DISPONIBLE>',
+      genero: '<NO DISPONIBLE>',
+      clasificacion: '<NO DISPONIBLE>',
+      sinopsis: '<NO DISPONIBLE>',
+      trailer: 'https://www.youtube.com/watch?v=tOlh-g2dxrI',
+      funciones: [],
     };
     this.username = this.props.location.state !== undefined ? this.props.location.state.username : undefined;
     this.codigo = parseInt(this.props.match.params.id, 10);
@@ -46,7 +38,18 @@ export default class DetallePelicula extends React.Component {
   }
 
   cargarDatos(datos) {
-    this.setState({ pelicula: datos.pelicula, info: datos.info });
+    this.setState({
+      nombre: datos.nombre,
+      genero: datos.genero,
+      clasificacion: datos.clasificacion,
+      sinopsis: datos.sinopsis,
+      trailer: datos.trailer,
+      funciones: datos.funciones,
+    });
+  }
+
+  codigoVideo() {
+    return this.state.trailer.match(/(?<==).*/g);
   }
 
   renderizarProlijo(lista) {
@@ -60,10 +63,11 @@ export default class DetallePelicula extends React.Component {
       <div>
         <div className="col col-show">
           <div className="col col-show">
-            <h3><span className="atributo">Nombre: </span>{this.state.pelicula.nombre}</h3>
-            <h3><span className="atributo">Genero: </span>{this.state.pelicula.genero}</h3>
-            <h3><span className="atributo">Clasificacion: </span>{this.state.pelicula.clasificacion}</h3>
-            <h3><span className="atributo">Sinopsis: </span>{this.state.pelicula.sinopsis}</h3>
+            <h3><span className="atributo">Nombre: </span>{this.state.nombre}</h3>
+            <h3><span className="atributo">Genero: </span>{this.state.genero}</h3>
+            <h3><span className="atributo">Czlasificacion: </span>{this.state.clasificacion}</h3>
+            <h3><span className="atributo">Sinopsis: </span>{this.state.sinopsis}</h3>
+            <iframe title={`trailer de ${this.state.nombre}`} width="560" height="315" src={`https://www.youtube.com/embed/${this.codigoVideo()}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /> <br />
             <ModalReserva />
           </div>
         </div>

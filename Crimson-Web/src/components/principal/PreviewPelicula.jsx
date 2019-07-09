@@ -9,14 +9,16 @@ export default class PreviewPelicula extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imagen: '/img/placeholder.png',
       nombre: this.props.nombre,
-      codigo: this.props.codigo,
       genero: this.props.genero,
       clasificacion: this.props.clasificacion,
       sinopsis: this.props.sinopsis,
-      sala: this.props.sala,
+      imagen: this.props.imagen,
     };
+  }
+
+  componentDidMount() {
+    console.log(this.state.imagen);
   }
 
   conseguirImagen() {
@@ -29,6 +31,10 @@ export default class PreviewPelicula extends React.Component {
 
   }
 
+  probar() {
+    console.log(this.state.imagen);
+  }
+
   render() {
     return (
       <div className="card peli-card cardPrev">
@@ -39,8 +45,8 @@ export default class PreviewPelicula extends React.Component {
             <span className="atributo">Genero: </span>{this.state.genero} <br />
             <span className="atributo">Clasificacion: </span>{this.state.clasificacion} <br />
             <span className="atributo">Sinopsis: </span>{this.state.sinopsis} <br />
-            <span className="atributo">Numero de sala: </span>{`${this.state.sala}`} <br />
           </p>
+          <button type="button" onClick={() => this.probar()}>Probar algo</button>
           <Link
             className="btn btn-primary"
             to={{ pathname: `/pelicula/${this.state.codigo}`, state: { username: this.props.username } }}

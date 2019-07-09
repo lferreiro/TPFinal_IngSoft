@@ -120,13 +120,24 @@ public class DataLoader {
         listFunciones5.add(funcion24);
         listFunciones5.add(funcion25);
 
+        String trailerAladin = "https://www.youtube.com/watch?v=P4hFcYjRl5w";
+        String imagenAladin = "http://www.impawards.com/2019/posters/aladdin_ver2_xlg.jpg";
+        String trailerDetectivePikachu = "https://www.youtube.com/watch?v=1roy4o4tqQM";
+        String imagenDetectivePikachu = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/detective-pikachu-posters-pokemon-1555077586.jpg?resize=768:*";
+        String trailerAvengersEndgame = "https://www.youtube.com/watch?v=TcMBFSGVi1c";
+        String imagenAvengersEndgame = "https://pbs.twimg.com/media/D1nmVNuU4AAO2yD.jpg";
+        String trailerJohnWick3 = "https://www.youtube.com/watch?v=pU8-7BX9uxs";
+        String imagenJohnWick3 = "https://i.pinimg.com/474x/ff/29/85/ff2985822be20fc27bf90dc21887bf0a.jpg";
+        String trailerGodzilla = "https://www.youtube.com/watch?v=oI8KeDWpgiY";
+        String imagenGodzilla = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/godzilla-2-poster-1544433582.jpg?crop=1xw:1xh;center,top&resize=768:*";
 
 
-        pelicula1 = new Pelicula("Aladdin", "Aventura Romantica", "ATP", listFunciones1, cartelera, "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán");
-        pelicula2 = new Pelicula("Detective Pikachu", "Aventura", "ATP" , listFunciones2, cartelera, "Cuando el gran detective privado Harry Goodman desaparece misteriosamente; Tim, su hijo de 21 años.");
-        pelicula3 = new Pelicula("Avengers Endgame", "Accion", "+13", listFunciones3,cartelera, "Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos.");
-        pelicula4 = new Pelicula("John Wick 3", "Accion", "+16", listFunciones4, cartelera, "John Wick (Keanu Reeves) regresa a la acción, solo que esta vez con una recompensa de 14 millones de dólares sobre su cabeza.");
-        pelicula5 = new Pelicula("Godzilla 2", "Ciencia Ficcion", "+13", listFunciones5, cartelera, "Godzilla: Rey de los Monstruos sigue los heroícos esfuerzos de los criptozoólogos de la agencia Monarch.");
+
+        pelicula1 = new Pelicula("Aladdin", "Aventura Romantica", "ATP", listFunciones1, cartelera, trailerAladin,imagenAladin,"Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán");
+        pelicula2 = new Pelicula("Detective Pikachu", "Aventura", "ATP" , listFunciones2, cartelera, trailerDetectivePikachu,imagenDetectivePikachu ,"Cuando el gran detective privado Harry Goodman desaparece misteriosamente; Tim, su hijo de 21 años.");
+        pelicula3 = new Pelicula("Avengers Endgame", "Accion", "+13", listFunciones3,cartelera, trailerAvengersEndgame, imagenAvengersEndgame,"Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos.");
+        pelicula4 = new Pelicula("John Wick 3", "Accion", "+16", listFunciones4, cartelera, trailerJohnWick3, imagenJohnWick3,"John Wick (Keanu Reeves) regresa a la acción, solo que esta vez con una recompensa de 14 millones de dólares sobre su cabeza.");
+        pelicula5 = new Pelicula("Godzilla 2", "Ciencia Ficcion", "+13", listFunciones5, cartelera, trailerGodzilla , imagenGodzilla ,"Godzilla: Rey de los Monstruos sigue los heroícos esfuerzos de los criptozoólogos de la agencia Monarch.");
 
 
         cartelera.agregarPelicula(pelicula1);
