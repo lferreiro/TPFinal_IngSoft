@@ -16,10 +16,10 @@ public class Pelicula {
 
     private String sinopsis;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Cartelera cartelera;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Funcion> funciones = new ArrayList<>();
 
     public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, Cartelera carteleraP, String sinopsis){
@@ -31,10 +31,11 @@ public class Pelicula {
         this.cartelera = carteleraP;
     }
 
-    public Pelicula(String nombreP, String generoP, String clasificacionP, String sinopsis) {
+    public Pelicula(String nombreP, String generoP, String clasificacionP, List<Funcion> funcionesP, String sinopsis) {
         this.nombre = nombreP;
         this.genero = generoP;
         this.clasificacion = clasificacionP;
+        this.funciones = funcionesP;
         this.sinopsis = sinopsis;
     }
 
@@ -78,6 +79,22 @@ public class Pelicula {
 
     public Sala getSala(Funcion funcion){
         return funcion.getSala();
+    }
+
+    public Cartelera getCartelera() {
+        return this.cartelera;
+    }
+
+    public void setCartelera(Cartelera cartelera) {
+        this.cartelera = cartelera;
+    }
+
+    public List<Funcion> getFunciones() {
+        return this.funciones;
+    }
+
+    public void setFunciones(List<Funcion> funciones) {
+        this.funciones = funciones;
     }
 
 
