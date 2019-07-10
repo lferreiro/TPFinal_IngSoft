@@ -82,7 +82,7 @@ public class Pelicula {
     }
 
     public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario, Funcion funcion, String email) throws AsientosInsuficientesException {
-        return new Reserva(funcion.getAsientosSala(cantidadAsientos), dniUsuario, email, this.getNombre(), funcion);
+        return new Reserva(funcion.reservarAsientos(cantidadAsientos), dniUsuario, email, this.getNombre(), funcion);
     }
 
     public Sala getSala(Funcion funcion){
@@ -120,5 +120,15 @@ public class Pelicula {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public void removerFuncionesLlenas() {
+        List<Funcion> funcionesConLugar= new ArrayList<>();
+        for(Funcion funcion : funciones){
+            if (!funcion.estaLlena()){
+                funcionesConLugar.add(funcion);
+            }
+        }
+        this.funciones = funcionesConLugar;
     }
 }

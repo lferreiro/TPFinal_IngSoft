@@ -27,7 +27,7 @@ public class ReservaTest {
 
     @Test
     public void sePasaLaReservaAJson() throws Exception {
-        String compare = "{\"id\":0,\"asientos\":2,\"dniUsuario\":123456,\"numeroSala\":7,\"emailReserva\":\"miguel@gmail.com\",\"nombrePelicula\":\"Endgame\",\"funcionReservada\":{\"id\":0,\"sala\":{\"numeroSala\":7,\"cantidadAsientos\":4,\"asientosOcupados\":0,\"tipoSala\":\"3D\"},\"horayFecha\":\"Jan 9, 2014 10:15:00 PM\"}}";
+        String compare = "{\"id\":0,\"asientos\":2,\"dniUsuario\":123456,\"numeroSala\":7,\"emailReserva\":\"miguel@gmail.com\",\"nombrePelicula\":\"Endgame\",\"funcionReservada\":{\"id\":0,\"sala\":{\"numeroSala\":7,\"cantidadAsientos\":4,\"tipoSala\":\"3D\"},\"horayFecha\":\"Jan 9, 2014 10:15:00 PM\",\"asientosOcupados\":0}}";
         String json = gson.toJson(reserva);
 
         assertEquals(compare, json);

@@ -20,6 +20,8 @@ public class Funcion {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yy hh:mm:ss")
     private Date horayFecha;
 
+    private int asientosOcupados;
+
     public Funcion() {}
 
     public Funcion(Sala sala, String horayFecha)  {
@@ -33,6 +35,7 @@ public class Funcion {
         }
         this.sala = sala;
         this.horayFecha = date;
+        this.asientosOcupados = 0;
     }
 
     public int getAsientosSala(int cantidadAsientos) throws AsientosInsuficientesException {
@@ -48,4 +51,38 @@ public class Funcion {
     }
 
     public Date getDate() {return this.horayFecha;}
+
+    public boolean estaLlena(){
+       return sala.getCantidadAsientos() <= asientosOcupados;
+    }
+
+    public int reservarAsientos(int cantidadAsientos) throws AsientosInsuficientesException{
+        if(this.sala.getCantidadAsientos() >= asientosOcupados + cantidadAsientos) {
+            asientosOcupados = asientosOcupados + cantidadAsientos;
+            return cantidadAsientos;
+        }
+        else{
+            throw new AsientosInsuficientesException("Queres reservar " + cantidadAsientos + " pero hay " + (cantidadAsientos-asientosOcupados) + " disponibles.");
+        }
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Date getHorayFecha() {
+        return horayFecha;
+    }
+
+    public void setHorayFecha(Date horayFecha) {
+        this.horayFecha = horayFecha;
+    }
+
+    public int getAsientosOcupados() {
+        return asientosOcupados;
+    }
+
+    public void setAsientosOcupados(int asientosOcupados) {
+        this.asientosOcupados = asientosOcupados;
+    }
 }

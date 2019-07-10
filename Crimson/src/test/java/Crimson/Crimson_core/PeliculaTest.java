@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 public class PeliculaTest {
 
     private Cartelera carteleraTest;
@@ -27,6 +29,7 @@ public class PeliculaTest {
     private Funcion funcion3;
     private Funcion funcion4;
     private Funcion funcion5;
+    private Funcion funcion6;
     private SimpleDateFormat formatter;
     private Date dateTime;
 
@@ -53,6 +56,7 @@ public class PeliculaTest {
         funcion3 = dl.getFuncion3();
         funcion4 = dl.getFuncion4();
         funcion5 = dl.getFuncion5();
+        funcion6 = dl.getFuncion6();
 
     }
 
@@ -100,7 +104,27 @@ public class PeliculaTest {
         Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
         usuarioTest.generarReserva(3, peliculaTest2, funcion2, "xd@gmail.com");
         Sala salaPelicula = peliculaTest2.getSala(funcion2);
-        assertEquals(salaPelicula.getAsientosOcupados(), 3);
+        assertEquals(funcion2.getAsientosOcupados(), 3);
+
+    }
+
+    @Test
+    public void usuarioReservaTodosLosAsientosDeUnaPeliculaYLaSalaQuedaLlena() throws AsientosInsuficientesException {
+
+        Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
+        usuarioTest.generarReserva(45, peliculaTest2, funcion6, "xd@gmail.com");
+        Sala salaPelicula = peliculaTest2.getSala(funcion2);
+        assertTrue(funcion6.estaLlena());
+
+    }
+
+    @Test
+    public void usuarioReservaTodosLosAsientosDeUnaPeliculaYLaSalaQuedaLlenaYEstaSeRemueve() throws AsientosInsuficientesException {
+
+        Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
+        usuarioTest.generarReserva(45, peliculaTest2, funcion6, "xd@gmail.com");
+        peliculaTest2.removerFuncionesLlenas();
+        assertEquals(peliculaTest2.getFunciones().size(), 4 );
 
     }
 
