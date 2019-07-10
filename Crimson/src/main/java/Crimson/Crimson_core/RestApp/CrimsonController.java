@@ -66,6 +66,11 @@ public class CrimsonController {
         return new ResponseEntity(reserva, HttpStatus.CREATED);
     }
 
+    @GetMapping("/pelicula/{id}")
+    public Pelicula getPeliculaById(@PathVariable(value = "id") String peliculaId) {
+        return peliculaRepository.findById(peliculaId).get();
+    }
+
     @RequestMapping("/pelicula")
     public List<HPelicula> getPelicula() {
         HSala sala = new HSala(3, null, 30, 0, "2D");
