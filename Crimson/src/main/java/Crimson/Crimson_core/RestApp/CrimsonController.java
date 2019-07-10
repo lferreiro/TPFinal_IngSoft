@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class CrimsonController {
 
     private static final String template = "Esta es:";
@@ -61,10 +61,10 @@ public class CrimsonController {
 
     }
 
-    @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
-    public @ResponseBody ResponseEntity addReserva  (@RequestParam String funcion, @RequestParam String nombre, @RequestParam int dniUsuario, @RequestParam String emailReserva, @RequestParam int asientos) throws AsientosInsuficientesException {
-        Funcion funcionReserva = funcionRepository.findById(funcion).get();
-        Reserva reserva = new Reserva(asientos, dniUsuario, emailReserva, nombre, funcionReserva);
+    @GetMapping("/reservar/{funcion}/{nombre}/{dniUsuario}/{emailReserva}/{asientos}")
+    public ResponseEntity addReserva(@PathVariable(value = "funcion") String funcion, @PathVariable(value = "nombre") String nombre, @PathVariable(value = "dniUsuario") String dniUsuario, @PathVariable(value = "emailReserva") String emailReserva, @PathVariable(value = "asientos") String asientos) throws AsientosInsuficientesException {
+        Funcion funcionReserva = funcionRepository.findById(Integer.parseInt(funcion)).get();
+        Reserva reserva = new Reserva(Integer.parseInt(asientos), Integer.parseInt(dniUsuario), emailReserva, nombre, funcionReserva);
         int asientosAReservar = reserva.getAsientos();
         funcionReserva.reservarAsientos(asientosAReservar);
         reservaRepository.save(reserva);
