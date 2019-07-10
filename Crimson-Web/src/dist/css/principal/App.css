@@ -31,6 +31,10 @@
   }
 }
 
+.container-fluid {
+  background-color: #fffbfb;
+}
+
 /* .row-show {
   border: 3px solid red;
 }

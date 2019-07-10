@@ -19,6 +19,7 @@
 
 .preview {
 	background-color: #fffaef;
+	border-radius: 10px;
 }
 
 .preview .btn {

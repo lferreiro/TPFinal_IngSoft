@@ -7,6 +7,16 @@
   text-align: center;
 }
 
+#np-container .btn {
+  color: #a02020;
+  background-color: #f37272;
+  border: 2px solid #a54e4e;
+}
+
+#np-container .btn:hover {
+  background-color: #fdadad;
+}
+
 .home h2 {
   font-size: 40px;
   color: #18729c;
