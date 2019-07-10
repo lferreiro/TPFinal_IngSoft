@@ -16,7 +16,7 @@ export default class ModalReserva extends React.Component {
   }
 
   reservar() {
-    API.put(`/reservar/${this.state.funcion}/${this.props.nombrePeli}/${this.state.dni}/${this.state.email}/${this.state.cantAsientos}`)
+    API.get(`/reservar/${this.state.funcion}/${this.props.nombrePeli}/${this.state.dni}/${this.state.email}/${this.state.cantAsientos}`)
       .then(() => this.reservaExitosa())
       .catch();
   }
