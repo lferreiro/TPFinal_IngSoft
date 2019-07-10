@@ -13,7 +13,7 @@ export default class PreviewPelicula extends React.Component {
       genero: this.props.genero,
       clasificacion: this.props.clasificacion,
       sinopsis: this.props.sinopsis,
-      imagen: this.props.imagen,
+      imagen: this.props.imagen || '/img/placeholder.png',
     };
   }
 
