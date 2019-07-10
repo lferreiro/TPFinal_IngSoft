@@ -16,3 +16,29 @@
 .card-title {
 	color: #862626;
 }
+
+.preview {
+	background-color: #fffaef;
+}
+
+.preview .btn {
+	border-radius: 15px;
+}
+
+.button-wrap {
+	padding-right: 70px;
+}
+
+.preview .btn-primary {
+	background-color: #5959a7;
+	border: 2px dotted #d2d2ff;
+}
+
+.preview .btn-primary:hover {
+	background-color: #830eb3;
+}
+
+.preview .btn-secondary {
+	background-color: #ff5151;
+	border: 0px;
+}
