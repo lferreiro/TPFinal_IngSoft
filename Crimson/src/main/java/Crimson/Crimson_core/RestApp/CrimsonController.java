@@ -5,6 +5,7 @@ import Crimson.Crimson_core.*;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
+import Crimson.Crimson_core.backend.repository.FuncionRepository;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.Pelicula;
 import Crimson.Crimson_core.backend.repository.ReservaRepository;
@@ -28,6 +29,9 @@ public class CrimsonController {
 
     @Autowired
     private PeliculaRepository peliculaRepository;
+
+    @Autowired
+    private FuncionRepository funcionRepository;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -59,11 +63,19 @@ public class CrimsonController {
         return "Saved";
     }
 
+    @PostMapping(path="/removerPelicula/{id}")
+    public void removerPelicula(@PathVariable(value = "id") String peliculaId){
+        Pelicula pelicula = peliculaRepository.findById(peliculaId).get();
+        peliculaRepository.delete(pelicula);
+
+    }
+
     @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
-    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva) throws AsientosInsuficientesException {
-        Funcion funcionReservada = reserva.getFuncion();
+    public @ResponseBody ResponseEntity addReserva  (@RequestParam String funcion, @RequestParam String nombre, @RequestParam int dniUsuario, @RequestParam String emailReserva, @RequestParam int asientos) throws AsientosInsuficientesException {
+        Funcion funcionReserva = funcionRepository.findById(funcion).get();
+        Reserva reserva = new Reserva(asientos, dniUsuario, emailReserva, nombre, funcionReserva);
         int asientosAReservar = reserva.getAsientos();
-        funcionReservada.reservarAsientos(asientosAReservar);
+        funcionReserva.reservarAsientos(asientosAReservar);
         reservaRepository.save(reserva);
         this.mailReserva(reserva);
         return new ResponseEntity(reserva, HttpStatus.CREATED);
