@@ -34,13 +34,37 @@ export default class DetallePelicula extends React.Component {
   }
 
   cargarDatos(datos) {
+    const falsas = [
+      {
+        id: 5,
+        asientosOcupados: 30,
+        date: '2019-06-10T11:00:00.000+0000',
+        horayFecha: '10-06-19 11:00:00',
+        numeroSala: 1,
+        sala: {
+          cantidadAsientos: 200,
+          numeroSala: 1,
+        },
+      },
+      {
+        id: 8,
+        asientosOcupados: 30,
+        date: '2019-06-10T03:00:00.000+0000',
+        horayFecha: '10-06-19 03:00:00',
+        numeroSala: 1,
+        sala: {
+          cantidadAsientos: 200,
+          numeroSala: 1,
+        },
+      }];
+
     this.setState({
       nombre: datos.nombre,
       genero: datos.genero,
       clasificacion: datos.clasificacion,
       sinopsis: datos.sinopsis,
       trailer: datos.trailer,
-      funciones: datos.funciones,
+      funciones: falsas,
     });
   }
 
@@ -81,7 +105,7 @@ export default class DetallePelicula extends React.Component {
         <div className="col-6 col-show fun-col">
           {this.renderizarFunciones()}
           <div className="col col-show">
-            <ModalReserva funciones={this.state.funciones} />
+            <ModalReserva nombrePeli={this.state.nombre} funciones={this.state.funciones} />
           </div>
           <br /><button type="button" onClick={() => this.probar()}>Probar algo</button>
         </div>

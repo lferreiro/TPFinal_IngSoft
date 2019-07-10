@@ -8,6 +8,7 @@ export default class ModalReserva extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      dni: '',
       email: '',
       funcion: '',
       cantAsientos: 0,
@@ -15,7 +16,7 @@ export default class ModalReserva extends React.Component {
   }
 
   reservar() {
-    API.put(`/reservar/`)
+    API.put(`/reservar/${this.state.funcion}/${this.props.nombrePeli}/${this.state.dni}/${this.state.email}/${this.state.cantAsientos}`)
       .then(() => this.reservaExitosa())
       .catch();
   }
@@ -25,7 +26,25 @@ export default class ModalReserva extends React.Component {
   }
 
   probar() {
-    console.log(this.props.funciones);
+    // console.log(this.props.funciones);
+    console.log(this.state);
+    console.log(this.props.nombrePeli);
+  }
+
+  cambiarDni(evento) {
+    this.setState({ dni: evento.target.value });
+  }
+
+  cambiarEmail(evento) {
+    this.setState({ email: evento.target.value });
+  }
+
+  cambiarFuncion(evento) {
+    this.setState({ funcion: evento.target.value });
+  }
+
+  cambiarAsientos(evento) {
+    this.setState({ cantAsientos: evento.target.value });
   }
 
   asientosDisponibles() {
@@ -42,7 +61,7 @@ export default class ModalReserva extends React.Component {
 
   selectFunciones() {
     return this.props.funciones.map((func, index) => (
-      <option key={index}>F{index + 1} a las {this.simpFecha(func)} en sala {func.sala.numeroSala}</option>
+      <option key={index} value={func.id}>F{index + 1} a las {this.simpFecha(func)} en sala {func.sala.numeroSala}</option>
     ));
   }
 
@@ -64,21 +83,29 @@ export default class ModalReserva extends React.Component {
               <div className="modal-body">
                 <div className="col mod-col col-show">
                   <span className="modal-line">Ingrese su DNI</span>
-                  <input className="form-control" type="text" placeholder="DNI" />
+                  <input className="form-control" type="text" placeholder="DNI" onChange={e => this.cambiarDni(e)} />
                 </div>
                 <div className="col mod-col col-show">
                   <span className="modal-line">Ingrese su e-mail</span>
-                  <input className="form-control" type="text" placeholder="E-mail" />
+                  <input className="form-control" type="text" placeholder="E-mail" onChange={e => this.cambiarEmail(e)} />
                 </div>
                 <div className="col mod-col col-show">
                   <span className="modal-line">Seleccione una función</span>
-                  <select className="form-control">
+                  <select className="form-control" onChange={e => this.cambiarFuncion(e)}>
+                    <option value="" />
                     {this.selectFunciones()}
                   </select>
                 </div>
                 <div className="col mod-col col-show">
                   <span className="modal-line">Cantidad de asientos a reservar</span>
-                  <input className="form-control" type="number" min="1" max={this.asientosDisponibles()} placeholder={`(${this.asientosDisponibles()} disponibles)`} />
+                  <input
+                    className="form-control"
+                    type="number"
+                    min="1"
+                    max={this.asientosDisponibles()}
+                    placeholder={`(${this.asientosDisponibles()} disponibles)`}
+                    onChange={e => this.cambiarAsientos(e)}
+                  />
                 </div>
               </div>
               <div className="modal-footer">

@@ -22,7 +22,7 @@ export default class PreviewPelicula extends React.Component {
   }
 
   borrarPeli() {
-    API.get(`/eliminar/${this.state.nombre}`)
+    API.get(`/removerPelicula/${this.state.nombre}`)
       .then(() => this.borradoExitoso())
       .catch();
   }
