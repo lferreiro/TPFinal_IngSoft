@@ -198,6 +198,8 @@ public class DataLoader {
         return funcion5;
     }
 
+    public Funcion getFuncion6() {return funcion6;}
+
     public Sala getSala1() {
         return sala1;
     }

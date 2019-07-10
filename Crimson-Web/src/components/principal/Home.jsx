@@ -4,6 +4,8 @@ import API from '../../service/api';
 
 import Cartelera from './Cartelera';
 
+import '../../dist/css/principal/Home.css';
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -41,11 +43,15 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Crimson</h1>
-        <button type="button" onClick={() => this.probar()}>Probar algo</button>
+      <div className="col col-show home">
+        <div id="title" className="col-2 col-show offset-5">
+          <h1>Crimson</h1>
+        </div>
+        {/* <button type="button" onClick={() => this.probar()}>Probar algo</button> */}
         <h2>Cartelera</h2>
-        <Cartelera contenido={this.state.cartelera} username={undefined} />
+        <div className="row row-show cartelera">
+          <Cartelera contenido={this.state.cartelera} />
+        </div>
       </div>
     );
   }

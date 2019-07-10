@@ -1,0 +1,17 @@
+.home h1 {
+  font-size: 60px;
+  color: #ca2424;
+}
+
+#title {
+  text-align: center;
+}
+
+.home h2 {
+  font-size: 40px;
+  color: #18729c;
+}
+
+.cartelera div {
+  padding: 10px;
+}

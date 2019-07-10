@@ -1,0 +1,31 @@
+.detalle h1 {
+  color: #b52929;
+}
+
+.det-col iframe {
+  padding-top: 10px;
+}
+
+.fun-col {
+  padding-left: 60px;
+}
+
+.funciones {
+  font-size: 20px;
+}
+
+.funciones h2 {
+  color: rgb(207, 140, 85);
+}
+
+.funciones .sala {
+  color: #a879d4;
+}
+
+.funciones .asientos {
+  color: #888c65;
+}
+
+.funciones .hora-fecha {
+  color: #72b1e8;
+}

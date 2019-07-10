@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import API from '../../service/api';
-
 import '../../dist/css/principal/PreviewPelicula.css';
+
+import API from '../../service/api';
 
 export default class PreviewPelicula extends React.Component {
   constructor(props) {
@@ -21,14 +21,14 @@ export default class PreviewPelicula extends React.Component {
     console.log(this.state.imagen);
   }
 
-  conseguirImagen() {
-    API.get('')
-      .then(response => this.cargarImagen(response))
-      .catch(console.log('imagen no encontrada'));
+  borrarPeli() {
+    API.get(`/eliminar/${this.state.nombre}`)
+      .then(() => this.borradoExitoso())
+      .catch();
   }
 
-  cargarImagen() {
-
+  borradoExitoso() {
+    alert('pelicula eliminada');
   }
 
   probar() {
@@ -37,7 +37,7 @@ export default class PreviewPelicula extends React.Component {
 
   render() {
     return (
-      <div className="card peli-card cardPrev">
+      <div className="card cardPrev preview">
         <img className="card-img-top imgPrev" src={this.state.imagen} alt={`imagen de ${this.state.nombre}`} />
         <div className="card-body">
           <h5 className="card-title">{this.state.nombre}</h5>
@@ -46,12 +46,15 @@ export default class PreviewPelicula extends React.Component {
             <span className="atributo">Clasificacion: </span>{this.state.clasificacion} <br />
             <span className="atributo">Sinopsis: </span>{this.state.sinopsis} <br />
           </p>
-          <button type="button" onClick={() => this.probar()}>Probar algo</button>
-          <Link
-            className="btn btn-primary"
-            to={{ pathname: `/pelicula/${this.state.codigo}`, state: { username: this.props.username } }}
-          > Ver detalle
-          </Link>
+          {/* <button type="button" onClick={() => this.probar()}>Probar algo</button> */}
+          <span className="button-wrap">
+            <Link
+              className="btn btn-primary"
+              to={{ pathname: `/pelicula/${this.state.nombre}` }}
+            > Ver detalle
+            </Link>
+          </span>
+          <button className="btn btn-secondary" type="button" onClick={() => this.borrarPeli()}>Eliminar</button>
         </div>
       </div>);
   }

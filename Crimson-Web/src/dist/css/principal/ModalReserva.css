@@ -1,4 +1,21 @@
+.modal-reserva {
+  width: 250px;
+  height: 70px;
+  background-color: #ff8989;
+  border: 3px dashed #da5656;
+}
+
+.modal-reserva:hover {
+  background-color: #da5656;
+  border: 3px hidden #da5656;
+}
+
 .modal-line {
   font-weight: 500;
   padding-right: 10px;
+}
+
+.mod-col {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

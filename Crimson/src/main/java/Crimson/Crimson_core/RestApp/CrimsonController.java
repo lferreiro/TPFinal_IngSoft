@@ -5,6 +5,7 @@ import Crimson.Crimson_core.*;
 import Crimson.Crimson_core.JSON_Classes.DatosPeliUser;
 import Crimson.Crimson_core.JSON_Holders.HPelicula;
 import Crimson.Crimson_core.JSON_Holders.HSala;
+import Crimson.Crimson_core.backend.repository.FuncionRepository;
 import Crimson.Crimson_core.backend.repository.PeliculaRepository;
 import Crimson.Crimson_core.Pelicula;
 import Crimson.Crimson_core.backend.repository.ReservaRepository;
@@ -30,16 +31,10 @@ public class CrimsonController {
     private PeliculaRepository peliculaRepository;
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private FuncionRepository funcionRepository;
 
-//    @PostConstruct
-//    public void initialize() {
-//        DataLoader loader = new DataLoader();
-//        Cartelera cartelera = new Cartelera();
-//        loader.crearSetDeDatos(cartelera);
-//        DataManager dataManager = new DataManager(cartelera);
-//        Intermodelo intermodelo = new Intermodelo(dataManager);
-//    }
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @GetMapping(path = "/cartelera")
     public @ResponseBody Iterable<Pelicula> getAllPeliculas() {
@@ -59,8 +54,19 @@ public class CrimsonController {
         return "Saved";
     }
 
+    @PostMapping(path="/removerPelicula/{id}")
+    public void removerPelicula(@PathVariable(value = "id") String peliculaId){
+        Pelicula pelicula = peliculaRepository.findById(peliculaId).get();
+        peliculaRepository.delete(pelicula);
+
+    }
+
     @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
-    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva) {
+    public @ResponseBody ResponseEntity addReserva  (@RequestParam String funcion, @RequestParam String nombre, @RequestParam int dniUsuario, @RequestParam String emailReserva, @RequestParam int asientos) throws AsientosInsuficientesException {
+        Funcion funcionReserva = funcionRepository.findById(funcion).get();
+        Reserva reserva = new Reserva(asientos, dniUsuario, emailReserva, nombre, funcionReserva);
+        int asientosAReservar = reserva.getAsientos();
+        funcionReserva.reservarAsientos(asientosAReservar);
         reservaRepository.save(reserva);
         this.mailReserva(reserva);
         return new ResponseEntity(reserva, HttpStatus.CREATED);
@@ -68,22 +74,9 @@ public class CrimsonController {
 
     @GetMapping("/pelicula/{id}")
     public Pelicula getPeliculaById(@PathVariable(value = "id") String peliculaId) {
-        return peliculaRepository.findById(peliculaId).get();
-    }
-
-    @RequestMapping("/pelicula")
-    public List<HPelicula> getPelicula() {
-        HSala sala = new HSala(3, null, 30, 0, "2D");
-        HPelicula peli = new HPelicula("Aladdin", 0001, "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
-        List<HPelicula> lista = new ArrayList<>();
-        lista.add(peli);
-        return lista;
-    }
-
-    @RequestMapping("/<usuario>/peli/<codigo_peli>")
-    public DatosPeliUser getDatosPelicula() {
-        //TODO
-        return null;
+        Pelicula pelicula = peliculaRepository.findById(peliculaId).get();
+        pelicula.removerFuncionesLlenas();
+        return pelicula;
     }
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
@@ -121,7 +114,7 @@ public class CrimsonController {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
         String stringDate = sdf.format(reserva.getFuncion().getDate());
 
-        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + reserva.getNombrePelicula() + " en la sala numero " + reserva.getFuncion().getNumeroSala() + " y la reserva esta vinculada al DNI: " + reserva.getDniUsuario());
+        msg.setText("Hola, su reserva fue exitosa. La misma es para el dia y hora: " + stringDate + ", para la pelicula " + reserva.getNombrePelicula() + " en la sala numero " + reserva.getFuncion().getNumeroSala() + " y la reserva esta vinculada al DNI: " + reserva.getDniUsuario());
 
         javaMailSender.send(msg);
 
