@@ -36,15 +36,6 @@ public class CrimsonController {
     @Autowired
     private JavaMailSender javaMailSender;
 
-//    @PostConstruct
-//    public void initialize() {
-//        DataLoader loader = new DataLoader();
-//        Cartelera cartelera = new Cartelera();
-//        loader.crearSetDeDatos(cartelera);
-//        DataManager dataManager = new DataManager(cartelera);
-//        Intermodelo intermodelo = new Intermodelo(dataManager);
-//    }
-
     @GetMapping(path = "/cartelera")
     public @ResponseBody Iterable<Pelicula> getAllPeliculas() {
         return peliculaRepository.findAll();
@@ -87,16 +78,6 @@ public class CrimsonController {
         pelicula.removerFuncionesLlenas();
         return pelicula;
     }
-
-    @RequestMapping("/pelicula")
-    public List<HPelicula> getPelicula() {
-        HSala sala = new HSala(3, null, 30, 0, "2D");
-        HPelicula peli = new HPelicula("Aladdin", 0001, "Aventura Romantica", "ATP", "Aladdin (Mena Massoud) es un adorable pero desafortunado ladronzuelo enamorado de la hija del Sultán, la princesa Jasmine (Naomi Scott). Para intentar conquistarla, acepta el desafío de Jafar (Marwan Kenzari), que consiste en entrar a una cueva en mitad del desierto para dar con una lámpara mágica que le concederá todos sus deseos. Allí es donde Aladdín conocerá al Genio (Will Smith), dando inicio a una aventura como nunca antes había imaginado", sala);
-        List<HPelicula> lista = new ArrayList<>();
-        lista.add(peli);
-        return lista;
-    }
-
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
     public HPelicula postPelicula(@RequestParam ("nombre") String nombre, @RequestParam("codigo") Integer codigo, @RequestParam("genero") String genero, @RequestParam("clasificacion") String clasificacion, @RequestParam ("sinopsis") String sinopsis) {
