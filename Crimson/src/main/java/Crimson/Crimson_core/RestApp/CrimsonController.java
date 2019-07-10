@@ -71,7 +71,9 @@ public class CrimsonController {
 
     @GetMapping("/pelicula/{id}")
     public Pelicula getPeliculaById(@PathVariable(value = "id") String peliculaId) {
-        return peliculaRepository.findById(peliculaId).get();
+        Pelicula pelicula = peliculaRepository.findById(peliculaId).get();
+        pelicula.removerFuncionesLlenas();
+        return pelicula;
     }
 
     @RequestMapping("/pelicula")
@@ -83,11 +85,6 @@ public class CrimsonController {
         return lista;
     }
 
-    @RequestMapping("/<usuario>/peli/<codigo_peli>")
-    public DatosPeliUser getDatosPelicula() {
-        //TODO
-        return null;
-    }
 
     @RequestMapping(value = "/postPelicula", method = RequestMethod.POST)
     public HPelicula postPelicula(@RequestParam ("nombre") String nombre, @RequestParam("codigo") Integer codigo, @RequestParam("genero") String genero, @RequestParam("clasificacion") String clasificacion, @RequestParam ("sinopsis") String sinopsis) {

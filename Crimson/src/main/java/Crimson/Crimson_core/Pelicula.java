@@ -121,4 +121,14 @@ public class Pelicula {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public void removerFuncionesLlenas() {
+        List<Funcion> funcionesConLugar= new ArrayList<>();
+        for(Funcion funcion : funciones){
+            if (!funcion.estaLlena()){
+                funcionesConLugar.add(funcion);
+            }
+        }
+        this.funciones = funcionesConLugar;
+    }
 }

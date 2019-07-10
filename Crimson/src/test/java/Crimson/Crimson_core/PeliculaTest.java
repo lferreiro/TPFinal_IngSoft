@@ -118,5 +118,15 @@ public class PeliculaTest {
 
     }
 
+    @Test
+    public void usuarioReservaTodosLosAsientosDeUnaPeliculaYLaSalaQuedaLlenaYEstaSeRemueve() throws AsientosInsuficientesException {
+
+        Usuario usuarioTest = new Usuario("xD", 123456, "xd@gmail.com");
+        usuarioTest.generarReserva(45, peliculaTest2, funcion6, "xd@gmail.com");
+        peliculaTest2.removerFuncionesLlenas();
+        assertEquals(peliculaTest2.getFunciones().size(), 4 );
+
+    }
+
 }
 
