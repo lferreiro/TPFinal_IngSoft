@@ -2,7 +2,42 @@ import React from 'react';
 
 import '../../dist/css/principal/ModalReserva.css';
 
+import API from '../../service/api';
+
 export default class ModalReserva extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      funcion: '',
+      cantAsientos: 0,
+    };
+  }
+
+  reservar() {
+    API.put(`/reservar/`)
+      .then(() => this.reservaExitosa())
+      .catch();
+  }
+
+  reservaExitosa() {
+    alert('Reserva enviada');
+  }
+
+  asientosDisponibles() {
+    return 2;
+  }
+
+  simpFecha(funcion) {
+    return funcion.horayFecha.slice(-8, -3);
+  }
+
+  renderizarFunciones() {
+    return this.props.funciones.map((func, index) => (
+      <option key={index}>F{index + 1} a las {this.simpFecha(func)} en sala {func.sala.numeroSala}</option>
+    ));
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -19,12 +54,28 @@ export default class ModalReserva extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <span className="modal-line">Ingrese su e-mail </span>
-                <input type="text" placeholder="E-mail" />
+                <div className="col mod-col col-show">
+                  <span className="modal-line">Ingrese su DNI</span>
+                  <input className="form-control" type="text" placeholder="DNI" />
+                </div>
+                <div className="col mod-col col-show">
+                  <span className="modal-line">Ingrese su e-mail</span>
+                  <input className="form-control" type="text" placeholder="E-mail" />
+                </div>
+                <div className="col mod-col col-show">
+                  <span className="modal-line">Seleccione una función</span>
+                  <select className="form-control">
+                    {this.renderizarFunciones()}
+                  </select>
+                </div>
+                <div className="col mod-col col-show">
+                  <span className="modal-line">Cantidad de asientos a reservar</span>
+                  <input className="form-control" type="number" min="1" max={this.asientosDisponibles()} placeholder={`(${this.asientosDisponibles()} disponibles)`} />
+                </div>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" className="btn btn-primary">Enviar</button>
+                <button type="button" className="btn btn-primary">Reservar</button>
               </div>
             </div>
           </div>
