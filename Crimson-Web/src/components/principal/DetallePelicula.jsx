@@ -83,7 +83,7 @@ export default class DetallePelicula extends React.Component {
           <div className="col col-show">
             <ModalReserva nombrePeli={this.state.nombre} funciones={this.state.funciones} />
           </div>
-          <br /><button type="button" onClick={() => this.probar()}>Probar algo</button>
+          {/* <br /><button type="button" onClick={() => this.probar()}>Probar algo</button> */}
         </div>
       </div>
     );

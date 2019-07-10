@@ -41,16 +41,10 @@ public class CrimsonController {
         return peliculaRepository.findAll();
     }
 
-    @GetMapping(path="/addPelicula") // Map ONLY GET Requests
-    public @ResponseBody String addNewPelicula (@RequestParam String name
-            , @RequestParam String genero, @RequestParam String clasificacion,@RequestParam String trailer, @RequestParam String imagen ,@RequestParam String sinopsis) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
+    @GetMapping(path="/addPelicula/{name}/{genero}/{clasificacion}/{trailer}/{imagen}/{sinopsis}")
+    public String addNewPelicula (@PathVariable(value = "name") String name, @PathVariable(value = "genero") String genero, @PathVariable(value = "clasificacion") String clasificacion,@PathVariable(value = "trailer") String trailer, @PathVariable(value = "imagen") String imagen ,@PathVariable(value = "sinopsis") String sinopsis) {
         Pelicula pelicula = new Pelicula(name, genero, clasificacion, new ArrayList<Funcion>(), trailer, imagen, sinopsis);
-
         peliculaRepository.save(pelicula);
-
         return "Saved";
     }
 
@@ -58,7 +52,6 @@ public class CrimsonController {
     public void removerPelicula(@PathVariable(value = "id") String peliculaId){
         Pelicula pelicula = peliculaRepository.findById(peliculaId).get();
         peliculaRepository.delete(pelicula);
-
     }
 
     @GetMapping("/reservar/{funcion}/{nombre}/{dniUsuario}/{emailReserva}/{asientos}")

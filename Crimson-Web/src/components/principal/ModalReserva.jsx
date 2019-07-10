@@ -111,7 +111,7 @@ export default class ModalReserva extends React.Component {
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" className="btn btn-primary" onClick={() => this.reservar()}>Reservar</button>
-                <button type="button" onClick={() => this.probar()}>Probar algo</button>
+                {/* <button type="button" onClick={() => this.probar()}>Probar algo</button> */}
               </div>
             </div>
           </div>

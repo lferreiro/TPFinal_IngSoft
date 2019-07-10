@@ -1,4 +1,21 @@
+.campos-creacion h1 {
+  color: #b52929;
+}
+
 .campos-creacion div {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.campos-creacion input {
+  width: 500px;
+}
+
+.campos-creacion button {
+  background-color: #ffa64a;
+  border: 0px;
+}
+
+.campos-creacion button:hover {
+  background-color: #cc7a00;
 }

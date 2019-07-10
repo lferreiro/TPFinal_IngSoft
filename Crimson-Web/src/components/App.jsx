@@ -10,7 +10,6 @@ import Root from './Root.jsx';
 import Home from './principal/Home';
 import DetallePelicula from './principal/DetallePelicula';
 import CreacionPelicula from './principal/CreacionPelicula';
-import Login from './login/Login';
 
 class App extends React.Component {
   render() {
@@ -20,7 +19,6 @@ class App extends React.Component {
           <Switch>
             <Route path="/pelicula/:nombre" component={DetallePelicula} />
             <Route path="/creacion" component={CreacionPelicula} />
-            <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </Switch>
         </Root>
