@@ -24,8 +24,16 @@ export default class ModalReserva extends React.Component {
     alert('Reserva enviada');
   }
 
+  probar() {
+    console.log(this.props.funciones);
+  }
+
   asientosDisponibles() {
-    return 2;
+    let cant = 0;
+    this.props.funciones.forEach((func) => {
+      cant = func.sala.cantidadAsientos - func.asientosOcupados;
+    });
+    return cant;
   }
 
   simpFecha(funcion) {
@@ -41,7 +49,7 @@ export default class ModalReserva extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#reservaModal">
+        <button type="button" className="btn btn-primary modal-reserva" data-toggle="modal" data-target="#reservaModal">
           Reservar
         </button>
         <div className="modal fade" id="reservaModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,6 +84,7 @@ export default class ModalReserva extends React.Component {
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" className="btn btn-primary">Reservar</button>
+                <button type="button" onClick={() => this.probar()}>Probar algo</button>
               </div>
             </div>
           </div>
