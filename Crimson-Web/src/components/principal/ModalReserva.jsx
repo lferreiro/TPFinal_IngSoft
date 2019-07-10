@@ -40,7 +40,7 @@ export default class ModalReserva extends React.Component {
     return funcion.horayFecha.slice(-8, -3);
   }
 
-  renderizarFunciones() {
+  selectFunciones() {
     return this.props.funciones.map((func, index) => (
       <option key={index}>F{index + 1} a las {this.simpFecha(func)} en sala {func.sala.numeroSala}</option>
     ));
@@ -73,7 +73,7 @@ export default class ModalReserva extends React.Component {
                 <div className="col mod-col col-show">
                   <span className="modal-line">Seleccione una función</span>
                   <select className="form-control">
-                    {this.renderizarFunciones()}
+                    {this.selectFunciones()}
                   </select>
                 </div>
                 <div className="col mod-col col-show">
