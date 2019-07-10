@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import API from '../../service/api';
-
 import '../../dist/css/principal/PreviewPelicula.css';
 
 export default class PreviewPelicula extends React.Component {
@@ -19,16 +17,6 @@ export default class PreviewPelicula extends React.Component {
 
   componentDidMount() {
     console.log(this.state.imagen);
-  }
-
-  conseguirImagen() {
-    API.get('')
-      .then(response => this.cargarImagen(response))
-      .catch(console.log('imagen no encontrada'));
-  }
-
-  cargarImagen() {
-
   }
 
   probar() {
@@ -49,7 +37,7 @@ export default class PreviewPelicula extends React.Component {
           <button type="button" onClick={() => this.probar()}>Probar algo</button>
           <Link
             className="btn btn-primary"
-            to={{ pathname: `/pelicula/${this.state.codigo}`, state: { username: this.props.username } }}
+            to={{ pathname: `/pelicula/${this.state.nombre}` }}
           > Ver detalle
           </Link>
         </div>
