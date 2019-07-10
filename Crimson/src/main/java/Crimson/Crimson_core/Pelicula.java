@@ -82,7 +82,7 @@ public class Pelicula {
     }
 
     public Reserva reservarAsientos(int cantidadAsientos, int dniUsuario, Funcion funcion, String email) throws AsientosInsuficientesException {
-        return new Reserva(funcion.getAsientosSala(cantidadAsientos), dniUsuario, email, this.getNombre(), funcion);
+        return new Reserva(funcion.reservarAsientos(cantidadAsientos), dniUsuario, email, this.getNombre(), funcion);
     }
 
     public Sala getSala(Funcion funcion){

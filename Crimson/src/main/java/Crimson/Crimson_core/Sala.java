@@ -15,13 +15,11 @@ public class Sala {
 
     private int cantidadAsientos;
 
-    private int asientosOcupados;
 
     private String tipoSala;
 
 
     public Sala(int cantidadDeAsientos, int numeroSala, String tipoSala){
-        this.asientosOcupados = 0;
         this.cantidadAsientos = cantidadDeAsientos;
         this.numeroSala = numeroSala;
         this.tipoSala = tipoSala;
@@ -30,13 +28,7 @@ public class Sala {
     public Sala() {}
 
     public int getAsientosSala(int cantAsientos) throws AsientosInsuficientesException {
-        if(this.cantidadAsientos > asientosOcupados + cantAsientos) {
-            asientosOcupados = asientosOcupados + cantAsientos;
-            return cantAsientos;
-        }
-        else{
-            throw new AsientosInsuficientesException("Queres reservar " + cantAsientos + " pero hay " + (cantidadAsientos-asientosOcupados) + " disponibles.");
-        }
+        return cantAsientos;
     }
 
     public void setAsientosSala(int asientosSala) {
@@ -51,11 +43,8 @@ public class Sala {
         this.numeroSala = numeroSala;
     }
 
-    public int getAsientosOcupados(){
-        return asientosOcupados;
-    }
-
     public int getCantidadAsientos(){
         return cantidadAsientos;
     }
+
 }

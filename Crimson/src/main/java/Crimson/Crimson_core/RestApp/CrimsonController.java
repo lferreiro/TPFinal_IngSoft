@@ -60,7 +60,10 @@ public class CrimsonController {
     }
 
     @RequestMapping(path="/reservar",  method = RequestMethod.PUT)
-    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva) {
+    public @ResponseBody ResponseEntity addReserva (@RequestBody Reserva reserva) throws AsientosInsuficientesException {
+        Funcion funcionReservada = reserva.getFuncion();
+        int asientosAReservar = reserva.getAsientos();
+        funcionReservada.reservarAsientos(asientosAReservar);
         reservaRepository.save(reserva);
         this.mailReserva(reserva);
         return new ResponseEntity(reserva, HttpStatus.CREATED);
@@ -116,7 +119,7 @@ public class CrimsonController {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
         String stringDate = sdf.format(reserva.getFuncion().getDate());
 
-        msg.setText("Hola, gracias por confiar en nosotros. Su reserva para el dia y hora: " + stringDate + " para la pelicula " + reserva.getNombrePelicula() + " en la sala numero " + reserva.getFuncion().getNumeroSala() + " y la reserva esta vinculada al DNI: " + reserva.getDniUsuario());
+        msg.setText("Hola, su reserva fue exitosa. La misma es para el dia y hora: " + stringDate + ", para la pelicula " + reserva.getNombrePelicula() + " en la sala numero " + reserva.getFuncion().getNumeroSala() + " y la reserva esta vinculada al DNI: " + reserva.getDniUsuario());
 
         javaMailSender.send(msg);
 
