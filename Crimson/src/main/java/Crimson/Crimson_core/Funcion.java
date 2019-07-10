@@ -53,7 +53,7 @@ public class Funcion {
     public Date getDate() {return this.horayFecha;}
 
     public boolean estaLlena(){
-       return sala.getCantidadAsientos() <= asientosOcupados;
+        return sala.getCantidadAsientos() <= asientosOcupados;
     }
 
     public int reservarAsientos(int cantidadAsientos) throws AsientosInsuficientesException{
@@ -84,5 +84,13 @@ public class Funcion {
 
     public void setAsientosOcupados(int asientosOcupados) {
         this.asientosOcupados = asientosOcupados;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId() {
+        this.id = id;
     }
 }
